@@ -456,11 +456,15 @@ async function generateConfig() {
   };
 
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000); // 25s timeout
     const res  = await fetch('https://web-production-ed6afc.up.railway.app/api/onboard', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify(configData),
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
     const json = await res.json();
     showResult(json.status === 'building' ? 'live' : 'fallback', clientEmail);
   } catch(e) {
@@ -492,7 +496,7 @@ function showResult(status, email) {
     document.getElementById('download_wrap').style.display = 'none';
   } else {
     document.getElementById('result_heading').textContent = "Server offline";
-    document.getElementById('result_body').textContent = "Download your config and send it to tom@getjunction.ai directly.";
+    document.getElementById('result_body').textContent = "Something went wrong on our end. Email hello@getjunction.ai and we'll get you set up manually.";
     document.getElementById('result_steps').style.display = 'none';
     document.getElementById('download_wrap').style.display = 'block';
     document.getElementById('config_preview').textContent = JSON.stringify(configData, null, 2);
