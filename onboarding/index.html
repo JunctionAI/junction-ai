@@ -458,7 +458,7 @@ async function generateConfig() {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 25000); // 25s timeout
-    const res  = await fetch('https://web-production-ed6afc.up.railway.app/api/onboard', {
+    const res  = await fetch('/api/onboard', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify(configData),

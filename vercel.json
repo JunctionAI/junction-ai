@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/api/:path*", "destination": "https://web-production-ed6afc.up.railway.app/api/:path*" },
     { "source": "/onboarding", "destination": "/onboarding/index.html" },
     { "source": "/onboarding/", "destination": "/onboarding/index.html" },
     { "source": "/feedback", "destination": "/feedback/index.html" },
