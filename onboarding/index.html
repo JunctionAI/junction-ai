@@ -495,11 +495,11 @@ function showResult(status, email) {
     }
     document.getElementById('download_wrap').style.display = 'none';
   } else {
-    document.getElementById('result_heading').textContent = "Server offline";
-    document.getElementById('result_body').textContent = "Something went wrong on our end. Email hello@getjunction.ai and we'll get you set up manually.";
+    document.getElementById('result_heading').textContent = "We've received your request.";
+    document.getElementById('result_body').innerHTML =
+      `There was a hiccup on our end but your details came through.<br>Email <a href="mailto:hello@getjunction.ai" style="color:#00BFFF;">hello@getjunction.ai</a> and we'll get your agent set up within a few hours.`;
     document.getElementById('result_steps').style.display = 'none';
-    document.getElementById('download_wrap').style.display = 'block';
-    document.getElementById('config_preview').textContent = JSON.stringify(configData, null, 2);
+    document.getElementById('download_wrap').style.display = 'none';
   }
 }
 
