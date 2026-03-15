@@ -1,0 +1,114 @@
+[
+  {
+    "timestamp": "2025-12-18T12:19:13.152191",
+    "user_id": 825333001,
+    "goal": "How do you feel about being my superintelligence sidekick?",
+    "output_length": 217,
+    "persona": "default",
+    "fast_path": true
+  },
+  {
+    "timestamp": "2025-12-18T12:20:37.256127",
+    "user_id": 825333001,
+    "goal": "Make a 3-tweet thread about why rent is modern feudalism",
+    "output_length": 5705,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T12:23:29.910432",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and summarize",
+    "output_length": 3291,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T12:26:27.741797",
+    "user_id": 825333001,
+    "goal": "Go to google.com, search \"best AI agent startups 2025\", and send a screenshot of the results",
+    "output_length": 5269,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T12:32:40.928926",
+    "user_id": 825333001,
+    "goal": "Make a 3-tweet thread about why rent is modern feudalism",
+    "output_length": 806,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T12:44:24.898512",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and send a screenshot of the Google search results",
+    "output_length": 196,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T12:48:26.673381",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and send a screenshot of the Google search results",
+    "output_length": 889,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T12:54:00.297589",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and send a screenshot of the Google search results",
+    "output_length": 191,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T13:00:03.127584",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and screenshot the results",
+    "output_length": 960,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T13:10:24.331425",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and screenshot the results",
+    "output_length": 210,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T13:12:03.693689",
+    "user_id": 825333001,
+    "goal": "How do you feel about handling captchas like a boss?",
+    "output_length": 271,
+    "persona": "default",
+    "fast_path": true
+  },
+  {
+    "timestamp": "2025-12-18T13:12:41.536960",
+    "user_id": 825333001,
+    "goal": "Screenshot results of what happened hwen i logged in and searched",
+    "output_length": 363,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T13:18:34.024879",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and screenshot the search results",
+    "output_length": 1554,
+    "persona": "default",
+    "fast_path": false
+  },
+  {
+    "timestamp": "2025-12-18T13:19:34.372777",
+    "user_id": 825333001,
+    "goal": "Research latest rent strike news in 2025 and screenshot the search results",
+    "output_length": 1780,
+    "persona": "default",
+    "fast_path": false
+  }
+]

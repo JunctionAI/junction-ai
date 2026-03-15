@@ -1,0 +1,58 @@
+# Unity MMA AI Systems - Render.com Configuration
+
+services:
+  # DM Bot - Instagram/Facebook webhook (needs public URL)
+  - type: web
+    name: unity-dm-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn barnaby_dm_bot.meta_webhook:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: META_ACCESS_TOKEN
+        sync: false
+      - key: META_VERIFY_TOKEN
+        sync: false
+      - key: META_APP_SECRET
+        sync: false
+      - key: XAI_API_KEY
+        sync: false
+
+  # Email Bot - Monitors info@unitymma.co.nz 24/7
+  - type: worker
+    name: unity-email-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python barnaby_email_bot/run_live.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: EMAIL_HOST
+        sync: false
+      - key: IMAP_PORT
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: XAI_API_KEY
+        sync: false
+
+  # Telegram Bot - Unity MMA enquiries via Telegram
+  - type: worker
+    name: unity-telegram-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python telegram_bot/telegram_bot.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: ALLOWED_USER_IDS
+        sync: false
+      - key: XAI_API_KEY
+        sync: false

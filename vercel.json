@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/onboarding", "destination": "/onboarding/index.html" },
+    { "source": "/onboarding/", "destination": "/onboarding/index.html" },
+    { "source": "/feedback", "destination": "/feedback/index.html" },
+    { "source": "/feedback/", "destination": "/feedback/index.html" }
+  ]
+}

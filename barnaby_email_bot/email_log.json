@@ -1,0 +1,519 @@
+{
+  "processed": [
+    {
+      "email": {
+        "subject": "Interested in joining",
+        "sender": "john.smith@gmail.com",
+        "sender_name": "John.Smith",
+        "sender_email": "john.smith@gmail.com",
+        "body": "Hi, I'm interested in joining Unity MMA. I've never done martial arts before but I'd love to try. What classes do you have for beginners?",
+        "date": "2025-12-18T14:49:42.408037",
+        "timestamp": "2025-12-18T14:49:42.408068"
+      },
+      "intent": "first_timer",
+      "action": "auto_reply",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T14:49:44.374839",
+      "draft_response": "Dear John.Smith,\n\nThank you for reaching out to Unity MMA! We're excited to hear you're interested in training with us.\n\nWe offer a FREE 1-Day Trial so you can experience our world-class facilities and coaching first-hand. No experience is needed - our coaches will guide you through everything.\n\nTo book your trial, simply visit: https://unitymma.co.nz/landing-page\n\nOur classes include MMA, Kickboxing, Boxing, Jiu Jitsu, and dedicated Kids programs. Our friendly team is here to help you find the perfect fit for your goals.\n\nIf you have any questions, feel free to reply to this email or call us on 027 200 7776.\n\nWe look forward to seeing you on the mats!\n\nWarm regards,\nThe Unity MMA Team\n19B William Pickering Drive, Rosedale, Auckland\n"
+    },
+    {
+      "email": {
+        "subject": "Interested in joining",
+        "sender": "john.smith@gmail.com",
+        "sender_name": "John.Smith",
+        "sender_email": "john.smith@gmail.com",
+        "body": "Hi, I'm interested in joining Unity MMA. I've never done martial arts before but I'd love to try. What classes do you have for beginners?",
+        "date": "2025-12-18T14:50:21.532673",
+        "timestamp": "2025-12-18T14:50:21.532795"
+      },
+      "intent": "first_timer",
+      "action": "auto_reply",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T14:50:23.012683",
+      "draft_response": "Dear John.Smith,\n\nThank you for reaching out to Unity MMA! We're excited to hear you're interested in training with us.\n\nWe offer a FREE 1-Day Trial so you can experience our world-class facilities and coaching first-hand. No experience is needed - our coaches will guide you through everything.\n\nTo book your trial, simply visit: https://unitymma.co.nz/landing-page\n\nOur classes include MMA, Kickboxing, Boxing, Jiu Jitsu, and dedicated Kids programs. Our friendly team is here to help you find the perfect fit for your goals.\n\nIf you have any questions, feel free to reply to this email or call us on 027 200 7776.\n\nWe look forward to seeing you on the mats!\n\nWarm regards,\nThe Unity MMA Team\n19B William Pickering Drive, Rosedale, Auckland\n"
+    },
+    {
+      "email": {
+        "subject": "Test Email",
+        "sender": "test@example.com",
+        "sender_name": "Test",
+        "sender_email": "test@example.com",
+        "body": "Cancel my membership",
+        "date": "2025-12-18T14:53:09.853280",
+        "timestamp": "2025-12-18T14:53:09.853290"
+      },
+      "intent": "cancellation",
+      "action": "escalate",
+      "confidence": 1.0,
+      "response_sent": false,
+      "timestamp": "2025-12-18T14:53:11.175709"
+    },
+    {
+      "email": {
+        "subject": "Test Email",
+        "sender": "test@example.com",
+        "sender_name": "Test",
+        "sender_email": "test@example.com",
+        "body": "I am interested in joining your gym",
+        "date": "2025-12-18T14:53:11.176858",
+        "timestamp": "2025-12-18T14:53:11.176862"
+      },
+      "intent": "first_timer",
+      "action": "auto_reply",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T14:53:12.215635",
+      "draft_response": "Dear Test,\n\nThank you for reaching out to Unity MMA! We're excited to hear you're interested in training with us.\n\nWe offer a FREE 1-Day Trial so you can experience our world-class facilities and coaching first-hand. No experience is needed - our coaches will guide you through everything.\n\nTo book your trial, simply visit: https://unitymma.co.nz/landing-page\n\nOur classes include MMA, Kickboxing, Boxing, Jiu Jitsu, and dedicated Kids programs. Our friendly team is here to help you find the perfect fit for your goals.\n\nIf you have any questions, feel free to reply to this email or call us on 027 200 7776.\n\nWe look forward to seeing you on the mats!\n\nWarm regards,\nThe Unity MMA Team\n19B William Pickering Drive, Rosedale, Auckland\n"
+    },
+    {
+      "email": {
+        "subject": "Test Email",
+        "sender": "test@example.com",
+        "sender_name": "Test",
+        "sender_email": "test@example.com",
+        "body": "I need to pause my membership please",
+        "date": "2025-12-18T14:53:12.218243",
+        "timestamp": "2025-12-18T14:53:12.218260"
+      },
+      "intent": "cancellation",
+      "action": "escalate",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T14:53:13.402886"
+    },
+    {
+      "email": {
+        "subject": "Test Email",
+        "sender": "test@example.com",
+        "sender_name": "Test",
+        "sender_email": "test@example.com",
+        "body": "What times are the classes?",
+        "date": "2025-12-18T14:53:13.404835",
+        "timestamp": "2025-12-18T14:53:13.404845"
+      },
+      "intent": "class_info",
+      "action": "auto_reply",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T14:53:14.557039",
+      "draft_response": "Dear Test,\n\nThank you for your enquiry about our class schedule.\n\n\nMONDAY:\n- 4:00pm: Teens (10-15 years)\n- 5:00pm: Adults Beginner Boxing\n- 6:00pm: Adults Advanced Boxing\n- 7:00pm: Jiu Jitsu (Gi)\n\nTUESDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults Kickboxing\n- 7:00pm: Adults MMA\n\nWEDNESDAY:\n- 4:00pm: Teens (10-15 years)\n- 5:00pm: Sparring\n- 6:00pm: MMA Sparring\n- 7:00pm: Jiu Jitsu (No Gi)\n\nTHURSDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults Kickboxing\n- 7:00pm: Adults MMA\n\nFRIDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults MMA\n- 7:00pm: BJJ Open Mat\n\nSATURDAY:\n- 9:00am: Box Fit\n- 10:00am: Teens (10-15 years)\n- 12:00pm: Jiu Jitsu (No Gi)\n- 2:00pm: Sparring\n\nSUNDAY:\n- 10:00am: Youth Boxing Class (6-15 years)\n- 11:00am: Adults Boxing\n\n\nYou can view our full timetable and book classes online at: https://unitymma.co.nz/book-online\n\nIf you're new to Unity MMA, don't forget we offer a FREE 1-Day Trial: https://unitymma.co.nz/landing-page\n\nFeel free to reach out if you have any other questions.\n\nWarm regards,\nThe Unity MMA Team\n"
+    },
+    {
+      "email": {
+        "subject": "Test Email",
+        "sender": "test@example.com",
+        "sender_name": "Test",
+        "sender_email": "test@example.com",
+        "body": "Cancel my membership",
+        "date": "2025-12-18T14:54:08.812186",
+        "timestamp": "2025-12-18T14:54:08.812233"
+      },
+      "intent": "cancellation",
+      "action": "escalate",
+      "confidence": 1.0,
+      "response_sent": false,
+      "timestamp": "2025-12-18T14:54:09.791966"
+    },
+    {
+      "email": {
+        "subject": "Interested in classes",
+        "sender": "Tom Hall-Taylor <halltaylor.tom@gmail.com>",
+        "sender_name": "Tom Hall-Taylor",
+        "sender_email": "halltaylor.tom@gmail.com",
+        "body": "What classes do you have for beginners?\r\n",
+        "date": "Thu, 18 Dec 2025 15:03:38 +1300",
+        "timestamp": "2025-12-18T15:04:45.277109",
+        "message_id": "880"
+      },
+      "intent": "class_info",
+      "action": "auto_reply",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:04:46.263265",
+      "draft_response": "Dear Tom Hall-Taylor,\n\nThank you for your enquiry about our class schedule.\n\n\nMONDAY:\n- 4:00pm: Teens (10-15 years)\n- 5:00pm: Adults Beginner Boxing\n- 6:00pm: Adults Advanced Boxing\n- 7:00pm: Jiu Jitsu (Gi)\n\nTUESDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults Kickboxing\n- 7:00pm: Adults MMA\n\nWEDNESDAY:\n- 4:00pm: Teens (10-15 years)\n- 5:00pm: Sparring\n- 6:00pm: MMA Sparring\n- 7:00pm: Jiu Jitsu (No Gi)\n\nTHURSDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults Kickboxing\n- 7:00pm: Adults MMA\n\nFRIDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults MMA\n- 7:00pm: BJJ Open Mat\n\nSATURDAY:\n- 9:00am: Box Fit\n- 10:00am: Teens (10-15 years)\n- 12:00pm: Jiu Jitsu (No Gi)\n- 2:00pm: Sparring\n\nSUNDAY:\n- 10:00am: Youth Boxing Class (6-15 years)\n- 11:00am: Adults Boxing\n\n\nYou can view our full timetable and book classes online at: https://unitymma.co.nz/book-online\n\nIf you're new to Unity MMA, don't forget we offer a FREE 1-Day Trial: https://unitymma.co.nz/landing-page\n\nFeel free to reach out if you have any other questions.\n\nWarm regards,\nThe Unity MMA Team\n"
+    },
+    {
+      "email": {
+        "subject": "SMTP Test - Port 465",
+        "sender": "Unity MMA <info@unitymma.co.nz>",
+        "sender_name": "Unity MMA",
+        "sender_email": "info@unitymma.co.nz",
+        "body": "Test email from Unity MMA bot - Port 465 SSL",
+        "date": "",
+        "timestamp": "2025-12-18T15:08:46.819690",
+        "message_id": "881"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:08:47.859363"
+    },
+    {
+      "email": {
+        "subject": "SMTP Test - Port 587",
+        "sender": "Unity MMA <info@unitymma.co.nz>",
+        "sender_name": "Unity MMA",
+        "sender_email": "info@unitymma.co.nz",
+        "body": "Test email from Unity MMA bot - Port 587 STARTTLS",
+        "date": "",
+        "timestamp": "2025-12-18T15:08:46.946090",
+        "message_id": "882"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:08:49.077766"
+    },
+    {
+      "email": {
+        "subject": "Interested in classes",
+        "sender": "info@unitymma.co.nz",
+        "sender_name": "Info",
+        "sender_email": "info@unitymma.co.nz",
+        "body": "Hi, I am interested in joining Unity MMA. What classes do you have for beginners?",
+        "date": "2025-12-18T15:09:00.967990",
+        "timestamp": "2025-12-18T15:09:00.967998"
+      },
+      "intent": "first_timer",
+      "action": "auto_reply",
+      "confidence": 0.9,
+      "response_sent": true,
+      "timestamp": "2025-12-18T15:09:01.902125",
+      "draft_response": "Dear Info,\n\nThank you for reaching out to Unity MMA! We're excited to hear you're interested in training with us.\n\nWe offer a FREE 1-Day Trial so you can experience our world-class facilities and coaching first-hand. No experience is needed - our coaches will guide you through everything.\n\nTo book your trial, simply visit: https://unitymma.co.nz/landing-page\n\nOur classes include MMA, Kickboxing, Boxing, Jiu Jitsu, and dedicated Kids programs. Our friendly team is here to help you find the perfect fit for your goals.\n\nIf you have any questions, feel free to reply to this email or call us on 027 200 7776.\n\nWe look forward to seeing you on the mats!\n\nWarm regards,\nThe Unity MMA Team\n19B William Pickering Drive, Rosedale, Auckland\n"
+    },
+    {
+      "email": {
+        "subject": "Joining",
+        "sender": "Tom Hall-Taylor <halltaylor.tom@gmail.com>",
+        "sender_name": "Tom Hall-Taylor",
+        "sender_email": "halltaylor.tom@gmail.com",
+        "body": "What classes do you have for beginners?\r\n",
+        "date": "Thu, 18 Dec 2025 15:17:10 +1300",
+        "timestamp": "2025-12-18T15:18:15.731832",
+        "message_id": "885",
+        "_imap_num": "b'885'"
+      },
+      "intent": "first_timer",
+      "action": "auto_reply",
+      "confidence": 0.9,
+      "response_sent": true,
+      "timestamp": "2025-12-18T15:18:18.649831",
+      "draft_response": "Dear Tom Hall-Taylor,\n\nThank you for reaching out to Unity MMA! We're excited to hear you're interested in training with us.\n\nWe offer a FREE 1-Day Trial so you can experience our world-class facilities and coaching first-hand. No experience is needed - our coaches will guide you through everything.\n\nTo book your trial, simply visit: https://unitymma.co.nz/landing-page\n\nOur classes include MMA, Kickboxing, Boxing, Jiu Jitsu, and dedicated Kids programs. Our friendly team is here to help you find the perfect fit for your goals.\n\nIf you have any questions, feel free to reply to this email or call us on 027 200 7776.\n\nWe look forward to seeing you on the mats!\n\nWarm regards,\nThe Unity MMA Team\n19B William Pickering Drive, Rosedale, Auckland\n"
+    },
+    {
+      "email": {
+        "subject": "Membership cancellation",
+        "sender": "Tom Hall-Taylor <halltaylor.tom@gmail.com>",
+        "sender_name": "Tom Hall-Taylor",
+        "sender_email": "halltaylor.tom@gmail.com",
+        "body": "Can i cancel my membership?\r\n\r\n-- \r\n*Tom Hall-Taylor*\r\n\r\nM. +44 7513384291\r\nE. halltaylor.tom@gmail.com\r\n",
+        "date": "Thu, 18 Dec 2025 15:19:38 +1300",
+        "timestamp": "2025-12-18T15:20:54.298971",
+        "message_id": "886",
+        "_imap_num": "b'886'"
+      },
+      "intent": "cancellation",
+      "action": "escalate",
+      "confidence": 1.0,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:20:56.330455"
+    },
+    {
+      "email": {
+        "subject": "Sparring",
+        "sender": "Tom Hall-Taylor <halltaylor.tom@gmail.com>",
+        "sender_name": "Tom Hall-Taylor",
+        "sender_email": "halltaylor.tom@gmail.com",
+        "body": "I have been training for a few months is it ok if I come to the sparring\r\nclass\r\n",
+        "date": "Thu, 18 Dec 2025 15:26:35 +1300",
+        "timestamp": "2025-12-18T15:27:02.942106",
+        "message_id": "887",
+        "_imap_num": "b'887'"
+      },
+      "intent": "class_info",
+      "action": "auto_reply",
+      "confidence": 0.9,
+      "response_sent": true,
+      "timestamp": "2025-12-18T15:27:04.579018",
+      "draft_response": "Dear Tom Hall-Taylor,\n\nThank you for your enquiry about our class schedule.\n\n\nMONDAY:\n- 4:00pm: Teens (10-15 years)\n- 5:00pm: Adults Beginner Boxing\n- 6:00pm: Adults Advanced Boxing\n- 7:00pm: Jiu Jitsu (Gi)\n\nTUESDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults Kickboxing\n- 7:00pm: Adults MMA\n\nWEDNESDAY:\n- 4:00pm: Teens (10-15 years)\n- 5:00pm: Sparring\n- 6:00pm: MMA Sparring\n- 7:00pm: Jiu Jitsu (No Gi)\n\nTHURSDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults Kickboxing\n- 7:00pm: Adults MMA\n\nFRIDAY:\n- 4:00pm: Little Monsters (6-9 years)\n- 5:00pm: Teens (10-15 years)\n- 6:00pm: Adults MMA\n- 7:00pm: BJJ Open Mat\n\nSATURDAY:\n- 9:00am: Box Fit\n- 10:00am: Teens (10-15 years)\n- 12:00pm: Jiu Jitsu (No Gi)\n- 2:00pm: Sparring\n\nSUNDAY:\n- 10:00am: Youth Boxing Class (6-15 years)\n- 11:00am: Adults Boxing\n\n\nYou can view our full timetable and book classes online at: https://unitymma.co.nz/book-online\n\nIf you're new to Unity MMA, don't forget we offer a FREE 1-Day Trial: https://unitymma.co.nz/landing-page\n\nFeel free to reach out if you have any other questions.\n\nWarm regards,\nThe Unity MMA Team\n"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  sarah@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:31:38 +1300",
+        "timestamp": "2025-12-18T15:32:11.941088",
+        "message_id": "888",
+        "_imap_num": "b'888'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:32:13.127696"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@gavin.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@gavin.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  john@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:31:45 +1300",
+        "timestamp": "2025-12-18T15:32:12.010962",
+        "message_id": "889",
+        "_imap_num": "b'889'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:32:14.587474"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  mike@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:31:48 +1300",
+        "timestamp": "2025-12-18T15:32:12.043891",
+        "message_id": "890",
+        "_imap_num": "b'890'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:32:15.746324"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@tasha.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@tasha.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  dave@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:31:54 +1300",
+        "timestamp": "2025-12-18T15:32:12.077110",
+        "message_id": "891",
+        "_imap_num": "b'891'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:32:16.576115"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  jane@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:31:59 +1300",
+        "timestamp": "2025-12-18T15:32:12.116365",
+        "message_id": "892",
+        "_imap_num": "b'892'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:32:17.512233"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@james.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@james.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  bob@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:32:03 +1300",
+        "timestamp": "2025-12-18T15:32:12.152655",
+        "message_id": "893",
+        "_imap_num": "b'893'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:32:18.364499"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@emily.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@emily.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  john@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:33:05 +1300",
+        "timestamp": "2025-12-18T15:33:49.540510",
+        "message_id": "894",
+        "_imap_num": "b'894'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:33:50.455741"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@alcott.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@alcott.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  jane@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:33:11 +1300",
+        "timestamp": "2025-12-18T15:33:49.574935",
+        "message_id": "895",
+        "_imap_num": "b'895'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:33:51.236123"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@alcott.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@alcott.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  jane@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:33:27 +1300",
+        "timestamp": "2025-12-18T15:33:49.608990",
+        "message_id": "896",
+        "_imap_num": "b'896'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:33:53.065033"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@james.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@james.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  bob@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:33:32 +1300",
+        "timestamp": "2025-12-18T15:33:49.648362",
+        "message_id": "897",
+        "_imap_num": "b'897'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:33:54.086753"
+    },
+    {
+      "email": {
+        "subject": "Mail delivery failed: returning message to sender",
+        "sender": "Mail Delivery System <Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz>",
+        "sender_name": "Mail Delivery System",
+        "sender_email": "Mailer-Daemon@franklin.smtp.mailx.hosts.net.nz",
+        "body": "This message was created automatically by mail delivery software.\r\n\r\nA message that you sent could not be delivered to one or more of its\r\nrecipients. This is a permanent error. The following address(es) failed:\r\n\r\n  newbie@example.com\r\n    an MX or SRV record indicated no SMTP service\r\n",
+        "date": "Thu, 18 Dec 2025 15:33:36 +1300",
+        "timestamp": "2025-12-18T15:33:49.681948",
+        "message_id": "898",
+        "_imap_num": "b'898'"
+      },
+      "intent": "system_noise",
+      "action": "ignore",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:33:56.257357"
+    },
+    {
+      "email": {
+        "subject": "Sparring question",
+        "sender": "Tom Hall-Taylor <halltaylor.tom@gmail.com>",
+        "sender_name": "Tom Hall-Taylor",
+        "sender_email": "halltaylor.tom@gmail.com",
+        "body": "I have been training a few months is it ok if I come to sparring?\r\n",
+        "date": "Thu, 18 Dec 2025 15:35:23 +1300",
+        "timestamp": "2025-12-18T15:35:58.378817",
+        "message_id": "899",
+        "_imap_num": "b'899'"
+      },
+      "intent": "personal_question",
+      "action": "escalate",
+      "confidence": 0.95,
+      "response_sent": false,
+      "timestamp": "2025-12-18T15:36:00.202631"
+    }
+  ],
+  "escalations": [
+    {
+      "timestamp": "2025-12-18T14:53:11.175742",
+      "sender": "test@example.com",
+      "sender_name": "Test",
+      "subject": "Test Email",
+      "intent": "cancellation",
+      "body": "Cancel my membership",
+      "draft_reply": "Dear Test,\n\nThank you for getting in touch with Unity MMA.\n\nWe've received your message and Barnaby will personally review and respond to you shortly.\n\nIf you need immediate assistance, please call us on 027 200 7776.\n\nWarm regards,\nThe Unity MMA Team\n",
+      "status": "pending_review"
+    },
+    {
+      "timestamp": "2025-12-18T14:53:13.402968",
+      "sender": "test@example.com",
+      "sender_name": "Test",
+      "subject": "Test Email",
+      "intent": "cancellation",
+      "body": "I need to pause my membership please",
+      "draft_reply": "Dear Test,\n\nThank you for getting in touch with Unity MMA.\n\nWe've received your message and Barnaby will personally review and respond to you shortly.\n\nIf you need immediate assistance, please call us on 027 200 7776.\n\nWarm regards,\nThe Unity MMA Team\n",
+      "status": "pending_review"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:09.791998",
+      "sender": "test@example.com",
+      "sender_name": "Test",
+      "subject": "Test Email",
+      "intent": "cancellation",
+      "body": "Cancel my membership",
+      "draft_reply": "Dear Test,\n\nThank you for getting in touch with Unity MMA.\n\nWe've received your message and Barnaby will personally review and respond to you shortly.\n\nIf you need immediate assistance, please call us on 027 200 7776.\n\nWarm regards,\nThe Unity MMA Team\n",
+      "status": "pending_review"
+    },
+    {
+      "timestamp": "2025-12-18T15:20:56.330548",
+      "sender": "Tom Hall-Taylor <halltaylor.tom@gmail.com>",
+      "sender_name": "Tom Hall-Taylor",
+      "subject": "Membership cancellation",
+      "intent": "cancellation",
+      "body": "Can i cancel my membership?\r\n\r\n-- \r\n*Tom Hall-Taylor*\r\n\r\nM. +44 7513384291\r\nE. halltaylor.tom@gmail.com\r\n",
+      "draft_reply": "Dear Tom Hall-Taylor,\n\nThank you for getting in touch with Unity MMA.\n\nWe've received your message and Barnaby will personally review and respond to you shortly.\n\nIf you need immediate assistance, please call us on 027 200 7776.\n\nWarm regards,\nThe Unity MMA Team\n",
+      "status": "pending_review"
+    },
+    {
+      "timestamp": "2025-12-18T15:36:00.202680",
+      "sender": "Tom Hall-Taylor <halltaylor.tom@gmail.com>",
+      "sender_name": "Tom Hall-Taylor",
+      "subject": "Sparring question",
+      "intent": "personal_question",
+      "body": "I have been training a few months is it ok if I come to sparring?\r\n",
+      "draft_reply": "Hi Tom Hall-Taylor,\n\nThanks for getting in touch! Barnaby will reply personally shortly.\n\nNeed us urgently? Call 027 200 7776.\n\nChat soon!\n\nUnity MMA Team\n",
+      "status": "pending_review"
+    }
+  ],
+  "stats": {
+    "total": 26,
+    "auto_replied": 8,
+    "escalated": 5,
+    "ignored": 13
+  }
+}

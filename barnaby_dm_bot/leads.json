@@ -1,0 +1,14 @@
+{
+  "demo_user_001": {
+    "name": null,
+    "phone": null,
+    "email": null,
+    "fitness_goal": null,
+    "experience_level": null,
+    "interested_in": null,
+    "timestamp": "2025-12-18T14:10:34.580741",
+    "messages": [
+      "Wjem os the next jiujitsi class"
+    ]
+  }
+}

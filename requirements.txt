@@ -1,0 +1,28 @@
+# Unity MMA AI Systems - Python Dependencies
+
+# AI/LLM
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-xai>=0.1.0
+langchain-openai>=0.1.0
+
+# Web/API
+flask>=3.0.0
+gunicorn>=21.0.0
+requests>=2.31.0
+
+# Email
+python-dotenv>=1.0.0
+
+# Dashboard (optional - for local use)
+streamlit>=1.30.0
+pandas>=2.0.0
+
+# Telegram Bot
+python-telegram-bot>=20.0
+
+# VAPI Voice (optional)
+# No additional deps needed - uses requests
+
+# Utilities
+schedule>=1.2.0

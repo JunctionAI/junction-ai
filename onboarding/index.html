@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junction AI — Set Up Your Agent</title>
+<link rel="icon" type="image/png" href="/logomark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jeko:wght@800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:  #0d0d0d;
+  --white:  #ffffff;
+  --cyan:   #00BFFF;
+  --violet: #884DFF;
+  --cerise: #FF00BF;
+  --gray:   #555566;
+  --silver: #9999aa;
+  --border: rgba(255,255,255,0.07);
+  --surf:   rgba(255,255,255,0.03);
+  --grad:   linear-gradient(135deg,#00BFFF 0%,#884DFF 50%,#FF00BF 100%);
+  --grad90: linear-gradient(90deg,#00BFFF 0%,#884DFF 55%,#FF00BF 100%);
+  --success:#34d399;
+}
+
+html { scroll-behavior:smooth; }
+body {
+  background:var(--black); color:var(--white);
+  font-family:'Poppins',sans-serif; font-weight:400;
+  line-height:1.6; min-height:100vh;
+}
+body::after {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:.018;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+
+h1,h2,h3,.jeko { font-family:'Jeko','Poppins',sans-serif; font-weight:800; }
+.gt { background:var(--grad90); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+/* ── Nav ── */
+nav {
+  position:sticky; top:0; z-index:100;
+  display:flex; align-items:center; padding:0 40px; height:64px;
+  background:rgba(13,13,13,.92); backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+nav img { height:28px; }
+
+/* ── Orb ── */
+.orb {
+  position:fixed; top:-200px; left:50%; transform:translateX(-50%);
+  width:700px; height:500px;
+  background:radial-gradient(ellipse,rgba(0,191,255,.06) 0%,rgba(136,77,255,.04) 50%,transparent 70%);
+  pointer-events:none; z-index:1;
+}
+
+/* ── Hero ── */
+.hero {
+  position:relative; z-index:2;
+  text-align:center; padding:72px 24px 52px;
+}
+.hero-label {
+  display:inline-block; font-size:11px; letter-spacing:3.5px;
+  text-transform:uppercase; color:var(--violet); font-weight:500; margin-bottom:18px;
+}
+.hero h1 { font-size:clamp(32px,4vw,52px); letter-spacing:-2px; line-height:1.05; margin-bottom:16px; }
+.hero p  { font-size:16px; color:var(--silver); max-width:480px; margin:0 auto; line-height:1.7; font-weight:300; }
+
+/* ── Form wrap ── */
+.form-wrap { max-width:660px; margin:0 auto; padding:0 24px 100px; position:relative; z-index:2; }
+
+/* ── Section ── */
+.section {
+  background:rgba(255,255,255,.025); border:1px solid var(--border);
+  border-radius:16px; padding:32px; margin-bottom:16px;
+  transition:border-color .3s;
+}
+.section:focus-within { border-color:rgba(0,191,255,.2); }
+.section-num  { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--violet); margin-bottom:6px; font-weight:500; }
+.section-head { font-size:17px; letter-spacing:-.3px; margin-bottom:6px; }
+.section-sub  { font-size:13px; color:var(--silver); margin-bottom:24px; font-weight:300; }
+
+/* ── Fields ── */
+.field { margin-bottom:20px; }
+.field:last-child { margin-bottom:0; }
+.field label { display:block; font-size:12px; color:var(--silver); margin-bottom:8px; letter-spacing:.3px; }
+input[type="text"], input[type="email"], textarea, select {
+  width:100%; background:rgba(255,255,255,.04); border:1px solid var(--border);
+  border-radius:10px; padding:13px 16px; color:var(--white);
+  font-size:14px; font-family:'Poppins',sans-serif;
+  transition:border-color .2s, background .2s;
+  -webkit-appearance:none;
+}
+input:focus, textarea:focus, select:focus {
+  outline:none; border-color:rgba(0,191,255,.4); background:rgba(0,191,255,.04);
+}
+textarea { resize:vertical; min-height:80px; line-height:1.6; }
+select option { background:#1a1a24; }
+::placeholder { color:var(--gray); }
+
+/* ── Agent type cards ── */
+.agent-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.agent-card {
+  border:1px solid var(--border); border-radius:12px; padding:18px;
+  cursor:pointer; transition:all .2s; user-select:none;
+  background:rgba(255,255,255,.02);
+}
+.agent-card:hover { border-color:rgba(136,77,255,.3); background:rgba(136,77,255,.04); }
+.agent-card.selected {
+  border-color:var(--cyan); background:rgba(0,191,255,.06);
+  box-shadow:0 0 24px rgba(0,191,255,.08);
+}
+.agent-card .ac-sym { width:32px; height:32px; margin-bottom:12px; }
+.agent-card .ac-sym svg { width:100%; height:100%; }
+.agent-card .ac-name { font-size:13px; font-weight:600; margin-bottom:4px; }
+.agent-card .ac-desc { font-size:11.5px; color:var(--silver); line-height:1.5; }
+.agent-card.selected .ac-name { color:var(--cyan); }
+
+/* ── Agent detail ── */
+.agent-detail {
+  background:rgba(0,191,255,.03); border:1px solid rgba(0,191,255,.12);
+  border-radius:10px; padding:22px; margin-top:16px;
+}
+.agent-detail-title { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--cyan); margin-bottom:14px; font-weight:500; }
+.agent-detail-hint { font-size:11px; color:var(--violet); margin-top:6px; }
+
+/* ── Tone pills ── */
+.tone-row { display:flex; gap:8px; flex-wrap:wrap; }
+.tone-pill {
+  padding:8px 16px; border:1px solid var(--border); border-radius:24px;
+  background:transparent; color:var(--silver); font-size:12px;
+  font-family:'Poppins',sans-serif; cursor:pointer; transition:all .2s;
+}
+.tone-pill:hover { border-color:rgba(136,77,255,.4); color:var(--white); }
+.tone-pill.selected { border-color:var(--violet); color:var(--violet); background:rgba(136,77,255,.1); }
+
+/* ── Privacy box ── */
+.privacy-box {
+  border:1px solid rgba(52,211,153,.18); background:rgba(52,211,153,.03);
+  border-radius:10px; padding:20px;
+}
+.privacy-box .pb-title { font-size:12px; color:var(--success); font-weight:600; margin-bottom:12px; letter-spacing:.3px; }
+.privacy-box ul { list-style:none; }
+.privacy-box li { font-size:12.5px; color:var(--silver); padding:4px 0 4px 20px; position:relative; line-height:1.5; }
+.privacy-box li::before { content:"✓"; position:absolute; left:0; color:var(--success); }
+
+/* ── Submit ── */
+.submit-btn {
+  width:100%; padding:18px; border:none; border-radius:12px;
+  background:var(--grad); color:#fff;
+  font-size:16px; font-weight:600; font-family:'Jeko','Poppins',sans-serif;
+  cursor:pointer; transition:opacity .2s, transform .15s;
+  margin-top:8px; letter-spacing:.3px;
+  box-shadow:0 0 40px rgba(136,77,255,.25);
+}
+.submit-btn:hover:not(:disabled) { opacity:.9; transform:translateY(-1px); }
+.submit-btn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+
+/* ── Result ── */
+.result {
+  display:none; background:rgba(52,211,153,.04);
+  border:1px solid rgba(52,211,153,.2); border-radius:16px;
+  padding:36px; margin-top:16px; text-align:center;
+}
+.result-icon { font-size:40px; margin-bottom:16px; }
+.result h3 { font-size:22px; letter-spacing:-.5px; margin-bottom:12px; }
+.result p  { font-size:14px; color:var(--silver); line-height:1.8; max-width:480px; margin:0 auto; }
+.result p strong { color:var(--white); }
+.result-steps { display:flex; flex-direction:column; gap:12px; margin:28px auto 0; max-width:440px; text-align:left; }
+.result-step { display:flex; gap:14px; align-items:flex-start; }
+.rs-num {
+  width:26px; height:26px; border-radius:50%; flex-shrink:0;
+  background:rgba(0,191,255,.15); border:1px solid rgba(0,191,255,.3);
+  color:var(--cyan); font-size:12px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.rs-text { font-size:13px; color:var(--silver); line-height:1.6; padding-top:4px; }
+.rs-text strong { color:var(--white); }
+
+.download-btn {
+  margin-top:20px; padding:13px 28px; background:rgba(255,255,255,.08);
+  border:1px solid var(--border); border-radius:8px;
+  color:var(--white); font-weight:600; font-size:14px;
+  font-family:'Poppins',sans-serif; cursor:pointer;
+}
+pre.config-pre {
+  background:rgba(0,0,0,.4); border:1px solid var(--border); border-radius:8px;
+  padding:16px; font-size:11px; overflow-x:auto; white-space:pre-wrap;
+  color:var(--cyan); text-align:left; margin-top:16px;
+}
+
+/* ── Footer ── */
+.foot {
+  text-align:center; padding:32px 24px;
+  font-size:12px; color:var(--gray); border-top:1px solid var(--border);
+  position:relative; z-index:2;
+}
+.foot a { color:var(--silver); text-decoration:none; }
+
+@media (max-width:520px) {
+  nav { padding:0 20px; }
+  .hero { padding:52px 20px 36px; }
+  .section { padding:24px 20px; }
+  .agent-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="orb"></div>
+
+<nav>
+  <a href="../junction-ai/index.html"><img src="../junction-ai/logo-dark.png" alt="Junction AI"></a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Personal AI Agents</div>
+  <h1>Build your <span class="gt">agent stack.</span></h1>
+  <p>Tell us what you need. We build your agent, train it on world-class expertise, and deliver it to your Telegram.</p>
+</div>
+
+<div class="form-wrap">
+
+  <!-- 01 About You -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <h3 class="section-head">About you</h3>
+    <p class="section-sub">What should your agent call you, and where do we send it?</p>
+
+    <div class="field">
+      <label>Your first name or nickname</label>
+      <input type="text" id="client_name" placeholder="e.g. Tyler">
+    </div>
+    <div class="field">
+      <label>Email — we'll send your activation instructions here</label>
+      <input type="email" id="client_email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>Your timezone</label>
+      <select id="timezone">
+        <option value="Pacific/Auckland">New Zealand (NZST)</option>
+        <option value="Australia/Sydney">Australia — Sydney (AEST)</option>
+        <option value="Australia/Melbourne">Australia — Melbourne (AEST)</option>
+        <option value="America/New_York">USA — New York (EST)</option>
+        <option value="America/Los_Angeles">USA — Los Angeles (PST)</option>
+        <option value="Europe/London">UK — London (GMT)</option>
+        <option value="Asia/Singapore">Singapore (SGT)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 02 Agent Type -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <h3 class="section-head">What kind of agent?</h3>
+    <p class="section-sub">Select all that apply. Each becomes a separate agent at $5/month.</p>
+
+    <div class="agent-grid" id="agent_types">
+
+      <div class="agent-card" onclick="toggleAgent(this)">
+        <input type="hidden" value="wellness-agent">
+        <div class="ac-sym"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ag1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs><circle cx="16" cy="16" r="9" stroke="url(#ag1)" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="url(#ag1)"/></svg></div>
+        <div class="ac-name">Brain &amp; Wellness</div>
+        <div class="ac-desc">Cognitive recovery, sleep, mental clarity, energy</div>
+      </div>
+
+      <div class="agent-card" onclick="toggleAgent(this)">
+        <input type="hidden" value="personal-agent">
+        <div class="ac-sym"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ag2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs><rect x="4" y="4" width="24" height="24" rx="3" stroke="url(#ag2)" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="url(#ag2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="ac-name">Accountability</div>
+        <div class="ac-desc">Daily check-ins, goals, habit loops, performance</div>
+      </div>
+
+      <div class="agent-card" onclick="toggleAgent(this)">
+        <input type="hidden" value="personal-agent">
+        <div class="ac-sym"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ag3" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs><path d="M5 9h22M5 14h16M5 19h18M5 24h12" stroke="url(#ag3)" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="ac-name">Learning</div>
+        <div class="ac-desc">Daily lessons from authors and frameworks you choose</div>
+      </div>
+
+      <div class="agent-card" onclick="toggleAgent(this)">
+        <input type="hidden" value="personal-agent">
+        <div class="ac-sym"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ag4" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs><path d="M7 22V13a9 9 0 1 1 18 0v9" stroke="url(#ag4)" stroke-width="2" stroke-linecap="round"/><path d="M3 20h6v6H3zM23 20h6v6h-6z" stroke="url(#ag4)" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <div class="ac-name">Life &amp; Thinking</div>
+        <div class="ac-desc">Thinking partner, reflection, big decisions, clarity</div>
+      </div>
+
+      <div class="agent-card" onclick="toggleAgent(this)">
+        <input type="hidden" value="personal-agent">
+        <div class="ac-sym"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ag5" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs><path d="M16 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="url(#ag5)" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <div class="ac-name">Other</div>
+        <div class="ac-desc">Something specific — describe it and we'll build it</div>
+      </div>
+
+    </div>
+
+    <div id="agent_detail_section" style="display:none;">
+      <div id="agent_configs"></div>
+    </div>
+  </div>
+
+  <!-- 03 Delivery -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <h3 class="section-head">How it shows up</h3>
+    <p class="section-sub">When do you want to hear from your agent, and in what voice?</p>
+
+    <div class="field">
+      <label>Schedule</label>
+      <select id="schedule_pref">
+        <option value="morning check-in daily at 7am">Morning only — 7am daily</option>
+        <option value="morning check-in at 7am and evening wind-down at 9pm">Morning + Evening — 7am and 9pm</option>
+        <option value="evening check-in at 8pm daily">Evening only — 8pm daily</option>
+        <option value="morning briefing at 7am, midday check-in at 12pm, and evening wind-down at 9pm">3× daily — 7am, 12pm, 9pm</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Tone</label>
+      <div class="tone-row" id="tone_options">
+        <button type="button" class="tone-pill" onclick="selectTone(this,'warm and encouraging')">Warm &amp; Encouraging</button>
+        <button type="button" class="tone-pill" onclick="selectTone(this,'direct and no-nonsense')">Direct &amp; No-nonsense</button>
+        <button type="button" class="tone-pill" onclick="selectTone(this,'clinical and evidence-based')">Clinical &amp; Evidence-based</button>
+        <button type="button" class="tone-pill" onclick="selectTone(this,'conversational and friendly')">Conversational</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Anything your agent should never bring up or do? (optional)</label>
+      <textarea id="boundaries" placeholder="e.g. Don't message me about work after 8pm. Never push me on topics I haven't raised myself."></textarea>
+    </div>
+  </div>
+
+  <!-- Privacy -->
+  <div class="section">
+    <div class="privacy-box">
+      <div class="pb-title">Your privacy</div>
+      <ul>
+        <li>Conversations are never stored or logged — nothing to hand over</li>
+        <li>Your agent files are encrypted. We cannot read them without your key.</li>
+        <li>We will never share your data with anyone, including authorities</li>
+        <li>Full deletion on request, any time</li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="submit-btn" id="submit_btn" onclick="generateConfig()">Build my agent →</button>
+
+  <div class="result" id="result">
+    <div class="result-icon">✦</div>
+    <h3 id="result_heading"></h3>
+    <p id="result_body"></p>
+    <div class="result-steps" id="result_steps" style="display:none;">
+      <div class="result-step"><div class="rs-num">1</div><div class="rs-text">Check your email — your activation code is on its way.</div></div>
+      <div class="result-step"><div class="rs-num">2</div><div class="rs-text">Open Telegram and find <strong>@JunctionAIBot</strong></div></div>
+      <div class="result-step"><div class="rs-num">3</div><div class="rs-text">Send <strong>/start [your code]</strong> — your agent introduces themselves.</div></div>
+    </div>
+    <div id="download_wrap" style="display:none;">
+      <pre class="config-pre" id="config_preview"></pre>
+      <button class="download-btn" onclick="downloadConfig()">Download config.json</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <a href="../junction-ai/index.html">← Back to Junction AI</a>
+  &nbsp;·&nbsp; Questions? <a href="mailto:tom@getjunction.ai">tom@getjunction.ai</a>
+</div>
+
+<script>
+let selectedTone = "warm and encouraging";
+let configData = null;
+
+function toggleAgent(card) {
+  card.classList.toggle('selected');
+  updateAgentConfigs();
+}
+
+function updateAgentConfigs() {
+  const cards = document.querySelectorAll('.agent-card.selected');
+  const section = document.getElementById('agent_detail_section');
+  const container = document.getElementById('agent_configs');
+  container.innerHTML = '';
+
+  if (cards.length === 0) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+
+  cards.forEach((card, i) => {
+    const type  = card.querySelector('input[type="hidden"]').value;
+    const label = card.querySelector('.ac-name').textContent;
+    const div   = document.createElement('div');
+    div.className = 'agent-detail';
+    div.style.marginTop = i === 0 ? '16px' : '12px';
+    div.innerHTML = `
+      <div class="agent-detail-title">${label}</div>
+      <div class="field" style="margin-bottom:12px;">
+        <label style="margin-bottom:8px;">What do you want this agent to help you with — and what should it be trained on?</label>
+        <textarea id="role_${i}" style="min-height:110px;" placeholder="Go as deep as you like. Mention specific authors, books, frameworks, experts, topics — the more you give us, the more world-class your agent will be.\n\ne.g. Help me with brain recovery from burnout. Train on Dr Daniel Amen's SPECT brain work, Huberman's sleep and focus protocols, and Rhonda Patrick's nutrition research."></textarea>
+        <div class="agent-detail-hint">✦ We research and build this expertise directly into your agent — actual source material, not generic advice.</div>
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>Give your agent a name (optional)</label>
+        <input type="text" id="name_${i}" placeholder="e.g. Arlo, Nova, Rex...">
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function selectTone(btn, tone) {
+  document.querySelectorAll('.tone-pill').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedTone = tone;
+}
+
+async function generateConfig() {
+  const btn = document.getElementById('submit_btn');
+  btn.textContent = 'Building your agent...';
+  btn.disabled = true;
+
+  const clientName  = document.getElementById('client_name').value.trim();
+  const clientEmail = document.getElementById('client_email').value.trim();
+
+  if (!clientName)  { reset(btn); alert('Please enter your name.'); return; }
+  if (!clientEmail) { reset(btn); alert('Please enter your email — we need it to send your activation code.'); return; }
+
+  const timezone  = document.getElementById('timezone').value;
+  const schedule  = document.getElementById('schedule_pref').value;
+  const boundaries = document.getElementById('boundaries').value.trim() || "Nothing specified";
+
+  const cards = document.querySelectorAll('.agent-card.selected');
+  if (cards.length === 0) { reset(btn); alert('Please select at least one agent type.'); return; }
+
+  const agents = [];
+  cards.forEach((card, i) => {
+    const type      = card.querySelector('input[type="hidden"]').value;
+    const agentName = document.getElementById(`name_${i}`)?.value.trim() || card.querySelector('.ac-name').textContent + ' Agent';
+    const role      = document.getElementById(`role_${i}`)?.value.trim() || "Personal assistant";
+    agents.push({ type, name: agentName, role, expertise_prompt: role, tone: selectedTone, schedule, boundaries });
+  });
+
+  configData = {
+    alias: clientName.toLowerCase().replace(/\s+/g,'-'),
+    email: clientEmail,
+    timezone, agents,
+    generated_at: new Date().toISOString(),
+    version: "1.0",
+  };
+
+  try {
+    const res  = await fetch('https://api.getjunction.ai/api/onboard', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(configData),
+    });
+    const json = await res.json();
+    showResult(json.status === 'building' ? 'live' : 'fallback', clientEmail);
+  } catch(e) {
+    showResult('fallback', clientEmail);
+  }
+}
+
+function reset(btn) {
+  btn.textContent = 'Build my agent →';
+  btn.disabled = false;
+}
+
+function showResult(status, email) {
+  const result = document.getElementById('result');
+  result.style.display = 'block';
+  result.scrollIntoView({ behavior:'smooth' });
+  document.getElementById('submit_btn').style.display = 'none';
+
+  if (status === 'live') {
+    document.getElementById('result_heading').textContent = "Your agent is being built.";
+    document.getElementById('result_body').innerHTML =
+      `We're researching and building your agent's expertise right now.<br>An email is on its way to <strong>${email}</strong> with your activation code.`;
+    document.getElementById('result_steps').style.display = 'flex';
+    document.getElementById('download_wrap').style.display = 'none';
+  } else {
+    document.getElementById('result_heading').textContent = "Server offline";
+    document.getElementById('result_body').textContent = "Download your config and send it to tom@getjunction.ai directly.";
+    document.getElementById('result_steps').style.display = 'none';
+    document.getElementById('download_wrap').style.display = 'block';
+    document.getElementById('config_preview').textContent = JSON.stringify(configData, null, 2);
+  }
+}
+
+function downloadConfig() {
+  if (!configData) return;
+  const blob = new Blob([JSON.stringify(configData,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `junction-config-${configData.alias}.json`;
+  a.click();
+}
+
+// Init
+document.getElementById('agent_detail_section').style.display = 'none';
+const firstTone = document.querySelector('.tone-pill');
+if (firstTone) firstTone.classList.add('selected');
+</script>
+</body>
+</html>

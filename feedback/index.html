@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Feedback — Junction AI</title>
+  <link rel="icon" type="image/png" href="/logomark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyan: #00BFFF;
+      --violet: #884DFF;
+      --cerise: #FF00BF;
+      --black: #0d0d0d;
+      --surface: #131318;
+      --border: #1e1e2e;
+      --text: #e2e2f0;
+      --muted: #9999aa;
+      --grad: linear-gradient(135deg, #00BFFF 0%, #884DFF 50%, #FF00BF 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 48px 16px;
+    }
+
+    .wrap { width: 100%; max-width: 520px; }
+
+    .logo {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 36px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .agent-name {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .field { margin-bottom: 24px; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .star {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+
+    .star:hover, .star.selected {
+      border-color: rgba(0,191,255,.4);
+      background: rgba(0,191,255,.08);
+      color: var(--cyan);
+    }
+
+    textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      resize: vertical;
+      min-height: 90px;
+      transition: border-color 0.2s;
+      line-height: 1.6;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+    }
+
+    textarea::placeholder { color: #444455; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      background: var(--grad);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .submit-btn:hover { opacity: 0.9; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .success-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .success h2 {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .success p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .error-msg {
+      color: #FF6B8A;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">Junction AI</div>
+
+    <div id="form-view">
+      <h1>How is <span class="agent-name" id="agent-name-display">your agent</span> doing?</h1>
+      <p class="sub">60 seconds. Your answers update them directly — no middleman.</p>
+
+      <div class="field">
+        <label>How useful have they been overall?</label>
+        <div class="stars" id="stars">
+          <div class="star" data-val="1" onclick="setRating(1)">★</div>
+          <div class="star" data-val="2" onclick="setRating(2)">★</div>
+          <div class="star" data-val="3" onclick="setRating(3)">★</div>
+          <div class="star" data-val="4" onclick="setRating(4)">★</div>
+          <div class="star" data-val="5" onclick="setRating(5)">★</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What's working well?</label>
+        <textarea id="working" placeholder="What have they done that's been genuinely useful?"></textarea>
+      </div>
+
+      <div class="field">
+        <label>What should they do differently?</label>
+        <textarea id="improve" placeholder="Tone, timing, depth, topics — anything you'd change."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Anything they still don't know about you?</label>
+        <textarea id="missing" placeholder="New context, changes in your situation, things to keep in mind."></textarea>
+      </div>
+
+      <button class="submit-btn" id="submit-btn" onclick="submit()">Send feedback →</button>
+      <div class="error-msg" id="error-msg">Something went wrong — please try again or reply to the email.</div>
+    </div>
+
+    <div class="success" id="success-view">
+      <div class="success-icon">✓</div>
+      <h2>Got it. <span class="agent-name" id="agent-name-thanks">Your agent</span> will be updated.</h2>
+      <p>Your feedback goes directly into their configuration. Next time you talk to them, they'll already know.</p>
+    </div>
+  </div>
+
+  <script>
+    let rating = 0;
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token') || '';
+    const agentName = params.get('agent') || 'your agent';
+
+    document.getElementById('agent-name-display').textContent = agentName;
+    document.getElementById('agent-name-thanks').textContent = agentName;
+
+    function setRating(val) {
+      rating = val;
+      document.querySelectorAll('.star').forEach(s => {
+        s.classList.toggle('selected', parseInt(s.dataset.val) <= val);
+      });
+    }
+
+    async function submit() {
+      const btn = document.getElementById('submit-btn');
+      const err = document.getElementById('error-msg');
+      err.style.display = 'none';
+
+      const working = document.getElementById('working').value.trim();
+      const improve = document.getElementById('improve').value.trim();
+      const missing = document.getElementById('missing').value.trim();
+
+      if (!rating && !working && !improve && !missing) {
+        err.textContent = 'Please fill in at least one field.';
+        err.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token, rating, working, improve, missing, agent_name: agentName })
+        });
+
+        if (!res.ok) throw new Error('Server error');
+
+        document.getElementById('form-view').style.display = 'none';
+        document.getElementById('success-view').style.display = 'block';
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = 'Send feedback →';
+        err.textContent = 'Something went wrong — please try again or reply to the email.';
+        err.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
