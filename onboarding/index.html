@@ -356,9 +356,11 @@ pre.config-pre {
     <h3 id="result_heading"></h3>
     <p id="result_body"></p>
     <div class="result-steps" id="result_steps" style="display:none;">
-      <div class="result-step"><div class="rs-num">1</div><div class="rs-text">Check your email — your activation code is on its way.</div></div>
-      <div class="result-step"><div class="rs-num">2</div><div class="rs-text">Open Telegram and find <strong>@JunctionAIBot</strong></div></div>
-      <div class="result-step"><div class="rs-num">3</div><div class="rs-text">Send <strong>/start [your code]</strong> — your agent introduces themselves.</div></div>
+      <div class="result-step"><div class="rs-num">1</div><div class="rs-text"><strong>Download Telegram</strong> if you don't have it — <a href="https://telegram.org" target="_blank" style="color:var(--cyan)">telegram.org</a></div></div>
+      <div class="result-step"><div class="rs-num">2</div><div class="rs-text">Create a new group chat. Name it after your agent — e.g. <strong id="agent-name-step">"your agent"</strong>.</div></div>
+      <div class="result-step"><div class="rs-num">3</div><div class="rs-text">Add <strong>@JunctionAIBot</strong> to the group.</div></div>
+      <div class="result-step"><div class="rs-num">4</div><div class="rs-text">Check your email for your activation code, then send <strong>/start [your code]</strong> in the group.</div></div>
+      <div class="result-step"><div class="rs-num">5</div><div class="rs-text">Your agent will introduce themselves and your first session begins.</div></div>
     </div>
     <div id="download_wrap" style="display:none;">
       <pre class="config-pre" id="config_preview"></pre>
@@ -482,6 +484,11 @@ function showResult(status, email) {
     document.getElementById('result_body').innerHTML =
       `We're researching and building your agent's expertise right now.<br>An email is on its way to <strong>${email}</strong> with your activation code.`;
     document.getElementById('result_steps').style.display = 'flex';
+    // Inject first agent name into step 2
+    const firstAgent = agents[0];
+    if (firstAgent) {
+      document.getElementById('agent-name-step').textContent = '"' + firstAgent.name + '"';
+    }
     document.getElementById('download_wrap').style.display = 'none';
   } else {
     document.getElementById('result_heading').textContent = "Server offline";
