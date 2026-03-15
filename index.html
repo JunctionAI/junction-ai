@@ -422,16 +422,43 @@ footer p { font-size:13px; color:var(--gray); }
   .tom-inner { grid-template-columns:1fr; }
   .pkg-grid,.pkg-grid-3 { grid-template-columns:1fr; }
   .cta-cards { grid-template-columns:1fr; }
+  .cta-inner { padding:0 24px; }
+  .tom-block { padding:32px; }
   footer { flex-direction:column; text-align:center; padding:28px 24px; }
   footer img { margin:0 auto; }
   .footer-links { justify-content:center; }
+  .imagine { padding:80px 0 60px; }
+  .packages { padding:80px 0; }
+  .about { padding:80px 0; }
+  .cta { padding:100px 0; }
 }
 @media (max-width:600px) {
-  .hero h1 { letter-spacing:-2px; }
+  .hero { padding:100px 20px 60px; }
+  .hero h1 { font-size:clamp(36px,10vw,56px); letter-spacing:-2px; }
+  .hero-eyebrow { font-size:11px; }
+  .nav-right .btn-ghost { display:none; }
   .persona-grid { grid-template-columns:1fr; }
   .agent-row { grid-template-columns:1fr; }
   .mkt-agent-grid { grid-template-columns:1fr 1fr; }
-  .personal-strip { flex-direction:column; align-items:flex-start; padding:24px; }
+  .personal-strip { flex-direction:column; align-items:flex-start; padding:20px; gap:12px; }
+  .personal-strip .btn { width:100%; text-align:center; }
+  .tom-block { padding:24px; border-radius:14px; }
+  .tom-stats { gap:20px; }
+  .tsv { font-size:24px; }
+  .cta-inner { padding:0 20px; }
+  .cta-inner h2 { letter-spacing:-1.5px; }
+  .cta-inner p { font-size:16px; margin-bottom:36px; }
+  .pkg-price .amount { font-size:40px; }
+  .cost-table { font-size:12px; }
+  .cost-table tbody td { padding:10px 8px 10px 0; }
+  .tier-badge { font-size:10px; padding:3px 8px; }
+  .imagine-intro h2 { letter-spacing:-1.5px; }
+  .packages-header h2 { letter-spacing:-1.5px; }
+  .hero-product { padding:24px; }
+  .pkg-card { padding:28px 24px; }
+  .wrap { padding:0 20px; }
+  .about-card { padding:20px; }
+  .section-label { font-size:10px; }
 }
 </style>
 </head>
