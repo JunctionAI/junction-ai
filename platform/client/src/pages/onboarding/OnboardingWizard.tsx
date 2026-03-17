@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../lib/api'
+import { supabase } from '../../lib/supabase'
 
 const STEPS = ['You', 'Dream', 'Rhythm', 'Connect', 'Review']
 
@@ -159,8 +160,31 @@ export function OnboardingWizard() {
   const isReviewStep = step === STEPS.length - 1
   const isTelegramStep = step === 3
 
+  async function handleSkip() {
+    try {
+      await api.updateProfile({ raw_answers: {} })
+    } catch { /* ignore */ }
+    navigate('/dashboard')
+  }
+
+  async function handleSignOut() {
+    await supabase.auth.signOut()
+    navigate('/login')
+  }
+
   return (
     <div className="wizard">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+        <button onClick={handleSignOut} style={{ background: 'none', border: 'none', color: 'var(--text-dim)', fontSize: 12, cursor: 'pointer', padding: 0 }}>
+          ← Sign out
+        </button>
+        {!isReviewStep && (
+          <button onClick={handleSkip} style={{ background: 'none', border: 'none', color: 'var(--text-dim)', fontSize: 12, cursor: 'pointer', padding: 0 }}>
+            Skip for now →
+          </button>
+        )}
+      </div>
+
       <div className="wizard-steps">
         {STEPS.map((_, i) => (
           <div key={i} className={`wizard-step ${i === step ? 'active' : i < step ? 'done' : ''}`} />
