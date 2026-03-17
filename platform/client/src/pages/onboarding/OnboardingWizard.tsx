@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../../lib/api'
 import { supabase } from '../../lib/supabase'
 
-const STEPS = ['You', 'Dream', 'Rhythm', 'Connect', 'Review']
+const STEPS = ['You', 'Connect', 'Review']
 
 // ─── VoiceCapture Component ───────────────────────────────────────────────────
 interface VoiceCaptureProps {
@@ -119,8 +119,7 @@ export function OnboardingWizard() {
 
   const canNext = () => {
     if (step === 0) return answers.name.length > 0 && answers.situation.length > 10
-    if (step === 1) return answers.dream_outcome.length > 10
-    return true // steps 2, 3, 4 always continuable
+    return true
   }
 
   const verifyTelegram = async () => {
@@ -141,10 +140,6 @@ export function OnboardingWizard() {
       const raw_answers = {
         name: answers.name,
         situation: answers.situation,
-        dream_outcome: answers.dream_outcome,
-        struggling_with: answers.struggling_with,
-        wake_time: answers.wake_time,
-        timezone: answers.timezone,
       }
       await api.updateProfile({ raw_answers })
       const { profile_text } = await api.compileProfile()
@@ -158,7 +153,7 @@ export function OnboardingWizard() {
   }
 
   const isReviewStep = step === STEPS.length - 1
-  const isTelegramStep = step === 3
+  const isTelegramStep = step === 1
 
   async function handleSkip() {
     try {
@@ -217,74 +212,8 @@ export function OnboardingWizard() {
         </>
       )}
 
-      {/* Step 1 — Dream */}
+      {/* Step 1 — Connect (Telegram) */}
       {step === 1 && (
-        <div className="wizard-step">
-          <h2>What does winning look like?</h2>
-          <p className="subtitle">Be specific — this is what your agents will hold you to.</p>
-          <p className="privacy-note"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>For your agents only. Never shared or used to train models.</p>
-
-          <VoiceCapture
-            label="What would you need to achieve in the next 6-12 months to call it a win?"
-            placeholder="e.g. Launch my product to $10k MRR, lose 15kg and keep it off, double my income..."
-            value={answers.dream_outcome}
-            onChange={v => setAnswers(a => ({ ...a, dream_outcome: v }))}
-            rows={4}
-          />
-
-          <VoiceCapture
-            label="What's blocking you right now?"
-            placeholder="e.g. I procrastinate on hard things, I run out of energy mid-day, I avoid difficult conversations..."
-            value={answers.struggling_with}
-            onChange={v => setAnswers(a => ({ ...a, struggling_with: v }))}
-            rows={3}
-          />
-        </div>
-      )}
-
-      {/* Step 2 — Rhythm */}
-      {step === 2 && (
-        <div className="wizard-step">
-          <h2>Your rhythm</h2>
-          <p className="subtitle">Your agents check in during your waking hours — not at 3am.</p>
-          <p className="privacy-note"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Only used for scheduling. Never shared.</p>
-
-          <div className="form-group">
-            <label className="form-label">What time do you wake up?</label>
-            <input
-              type="time"
-              className="form-control"
-              value={answers.wake_time}
-              onChange={e => setAnswers(a => ({ ...a, wake_time: e.target.value }))}
-            />
-          </div>
-
-          <div className="form-group">
-            <label className="form-label">Your timezone</label>
-            <select
-              className="form-control"
-              value={answers.timezone}
-              onChange={e => setAnswers(a => ({ ...a, timezone: e.target.value }))}
-            >
-              <option value="Pacific/Auckland">Auckland (NZST)</option>
-              <option value="Australia/Sydney">Sydney (AEST)</option>
-              <option value="Asia/Singapore">Singapore (SGT)</option>
-              <option value="Asia/Tokyo">Tokyo (JST)</option>
-              <option value="Europe/London">London (GMT)</option>
-              <option value="Europe/Paris">Paris (CET)</option>
-              <option value="America/New_York">New York (EST)</option>
-              <option value="America/Chicago">Chicago (CST)</option>
-              <option value="America/Denver">Denver (MST)</option>
-              <option value="America/Los_Angeles">Los Angeles (PST)</option>
-              <option value="America/Toronto">Toronto (EST)</option>
-              <option value="America/Vancouver">Vancouver (PST)</option>
-            </select>
-          </div>
-        </div>
-      )}
-
-      {/* Step 3 — Connect (Telegram) */}
-      {step === 3 && (
         <>
           <h1>Connect Telegram</h1>
           <p className="subtitle">Your agents communicate via Telegram. Let's link your account.</p>
@@ -326,7 +255,7 @@ export function OnboardingWizard() {
         </>
       )}
 
-      {/* Step 4 — Review */}
+      {/* Step 2 — Review */}
       {isReviewStep && (
         <>
           <h1>Your profile</h1>
