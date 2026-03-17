@@ -28,9 +28,11 @@ export function LoginPage() {
           setCheckEmail(true)
         }
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password })
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
         if (error) throw error
-        navigate('/dashboard')
+        // Check onboarding status — new/incomplete users go to onboarding, everyone else to dashboard
+        const { data: userData } = await supabase.from('users').select('onboarding_complete').eq('id', data.user.id).single()
+        navigate(userData?.onboarding_complete ? '/dashboard' : '/onboarding')
       }
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Something went wrong')

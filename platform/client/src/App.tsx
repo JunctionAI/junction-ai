@@ -24,15 +24,14 @@ function AppRoutes() {
   const { user, loading, onboardingComplete } = useAuth()
   if (loading) return <div className="loading-screen">Loading...</div>
 
-  // null = still fetching onboarding status — don't redirect yet
-  const dashboardRedirect = user && onboardingComplete !== null
-    ? (onboardingComplete === false ? '/onboarding' : '/dashboard')
-    : null
+  // Only redirect away from login/landing if already fully authenticated
+  // Never silently redirect to /onboarding from the login page — ProtectedRoute handles that after sign-in
+  const alreadyAuthed = user && onboardingComplete === true
 
   return (
     <Routes>
-      <Route path="/" element={dashboardRedirect ? <Navigate to={dashboardRedirect} /> : <LandingPage />} />
-      <Route path="/login" element={dashboardRedirect ? <Navigate to={dashboardRedirect} /> : <LoginPage />} />
+      <Route path="/" element={alreadyAuthed ? <Navigate to="/dashboard" /> : <LandingPage />} />
+      <Route path="/login" element={alreadyAuthed ? <Navigate to="/dashboard" /> : <LoginPage />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
       <Route path="/onboarding" element={
         <ProtectedRoute><OnboardingWizard /></ProtectedRoute>
