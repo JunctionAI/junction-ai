@@ -1,0 +1,366 @@
+/* Recovery Companions Dashboard — matches Junction AI dark theme */
+
+.rc-subtitle {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.rc-tab-bar {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 3px;
+}
+.rc-tab {
+  padding: 8px 18px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rc-tab:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.04);
+}
+.rc-tab.active {
+  color: var(--text-h);
+  background: rgba(255,255,255,0.08);
+}
+
+.rc-error {
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.2);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* Metrics row */
+.rc-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+@media (max-width: 900px) {
+  .rc-metrics-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .rc-metrics-row { grid-template-columns: 1fr; }
+}
+
+.rc-metric-card {
+  text-align: center;
+  padding: 20px;
+}
+.rc-metric-label {
+  color: var(--text-dim);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.rc-metric-value {
+  color: var(--text-h);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.rc-metric-sub {
+  color: var(--text-dim);
+  font-size: 12px;
+  margin-top: 4px;
+}
+.rc-accent {
+  color: #00c878 !important;
+}
+
+/* Companion cards */
+.rc-companion-card {
+  margin-bottom: 20px;
+  padding: 24px;
+}
+.rc-companion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+.rc-companion-header h3 {
+  color: var(--text-h);
+  font-size: 17px;
+  margin: 0;
+}
+.rc-companion-desc {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin-top: 4px;
+}
+.rc-companion-stats {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.rc-stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Phase timeline */
+.rc-phases {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.rc-phase {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  position: relative;
+}
+.rc-phase:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 22px;
+  bottom: -8px;
+  width: 1px;
+  background: rgba(255,255,255,0.08);
+}
+.rc-phase-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+  border: 2px solid rgba(255,255,255,0.15);
+  background: transparent;
+}
+.rc-phase-done .rc-phase-dot {
+  background: #00c878;
+  border-color: #00c878;
+}
+.rc-phase-active .rc-phase-dot {
+  background: #884DFF;
+  border-color: #884DFF;
+  box-shadow: 0 0 8px rgba(136, 77, 255, 0.4);
+}
+.rc-phase-future .rc-phase-dot {
+  border-color: rgba(255,255,255,0.1);
+}
+.rc-phase-done::after {
+  background: #00c878 !important;
+}
+.rc-phase-active::after {
+  background: linear-gradient(to bottom, #884DFF, rgba(255,255,255,0.08)) !important;
+}
+.rc-phase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rc-phase-name {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 500;
+}
+.rc-phase-done .rc-phase-name { color: #00c878; }
+.rc-phase-active .rc-phase-name { color: var(--text-h); font-weight: 600; }
+.rc-phase-desc {
+  color: var(--text-dim);
+  font-size: 11px;
+  opacity: 0.6;
+}
+.rc-phase-active .rc-phase-desc { opacity: 1; }
+
+/* Cost section */
+.rc-cost-section {
+  margin-top: 4px;
+}
+.rc-cost-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.rc-cost-header h4 {
+  color: var(--text);
+  font-size: 14px;
+  margin: 0;
+}
+.rc-cost-total {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+.rc-spend-table { font-size: 13px; }
+.rc-spend-header {
+  display: grid;
+  grid-template-columns: 1fr 60px 90px 80px;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.rc-spend-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 90px 80px;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text);
+  font-size: 12px;
+}
+.rc-spend-row span:last-child { text-align: right; }
+.rc-spend-row span:nth-child(2),
+.rc-spend-row span:nth-child(3),
+.rc-spend-header span:nth-child(2),
+.rc-spend-header span:nth-child(3) { text-align: right; }
+.rc-empty {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Products & Fulfillment tab */
+.rc-products-intro {
+  margin-bottom: 20px;
+  padding: 24px;
+}
+.rc-products-intro h3 {
+  color: var(--text-h);
+  font-size: 17px;
+  margin: 0 0 8px 0;
+}
+.rc-products-intro p {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin: 0 0 20px 0;
+}
+.rc-product-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 700px) {
+  .rc-product-summary { grid-template-columns: repeat(2, 1fr); }
+}
+.rc-product-stat {
+  text-align: center;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+}
+.rc-product-stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-h);
+}
+.rc-product-stat-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.rc-product-category {
+  margin-bottom: 20px;
+  padding: 20px 24px;
+}
+.rc-product-category h3 {
+  color: var(--text-h);
+  font-size: 15px;
+  margin: 0 0 16px 0;
+}
+
+.rc-product-row {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.rc-product-row:last-child { border-bottom: none; }
+.rc-product-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.rc-product-name {
+  color: var(--text-h);
+  font-size: 14px;
+  font-weight: 500;
+}
+.rc-priority-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.rc-priority-high {
+  background: rgba(0, 200, 120, 0.12);
+  color: #00c878;
+}
+.rc-priority-medium {
+  background: rgba(255, 200, 50, 0.12);
+  color: #ffc832;
+}
+.rc-priority-low {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-dim);
+}
+.rc-product-dose {
+  color: var(--text);
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.rc-product-notes {
+  color: var(--text-dim);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.rc-product-users {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.rc-product-user-tag {
+  background: rgba(136, 77, 255, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(136, 77, 255, 0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+}
+
+.rc-footer-note {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 11px;
+  padding: 12px 0;
+  opacity: 0.5;
+}

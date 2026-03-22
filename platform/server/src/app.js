@@ -7,6 +7,8 @@ import { profileRoutes } from './routes/profile.js'
 import { agentRoutes } from './routes/agents.js'
 import { telegramRoutes } from './routes/telegram.js'
 import { usageRoutes } from './routes/usage.js'
+import { tidefixRoutes } from './routes/tidefix.js'
+import { companionRoutes } from './routes/companions.js'
 import { loggingMiddleware } from './middleware/logging.js'
 
 const app = express()
@@ -22,11 +24,12 @@ app.use(helmet())
 const ALLOWED_ORIGINS = [
   'https://app.getjunction.ai',
   'http://localhost:5173',
+  'null',  // file:// protocol sends 'null' as origin
 ]
 app.use(cors({
   origin: (origin, cb) => {
-    // Allow server-to-server requests (no origin) and listed origins
-    if (!origin || ALLOWED_ORIGINS.includes(origin)) return cb(null, true)
+    // Allow server-to-server requests (no origin), listed origins, and file:// (null)
+    if (!origin || ALLOWED_ORIGINS.includes(origin) || origin === 'null') return cb(null, true)
     cb(new Error('Not allowed by CORS'))
   },
   credentials: true,
@@ -77,6 +80,8 @@ app.use('/api/profile', authMiddleware, profileRoutes)
 app.use('/api/agents', authMiddleware, agentRoutes)
 app.use('/api/telegram', authMiddleware, telegramRoutes)
 app.use('/api/usage', authMiddleware, usageRoutes)
+app.use('/api/tidefix', tidefixRoutes)  // No auth — local-only data, read from bot files
+app.use('/api/companions', companionRoutes)  // No auth — local-only recovery companion data
 
 // ─── Error handler — never leak internals ────────────────────────────────────
 app.use((err, req, res, _next) => {
