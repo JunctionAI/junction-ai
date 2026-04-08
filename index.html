@@ -3,990 +3,1083 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Junction AI — Your AI Operating Layer</title>
-<link rel="icon" type="image/png" href="logomark.png">
+<title>Junction AI — Expert Marketing, Powered by AI</title>
+<meta name="description" content="10+ years of marketing expertise, now supercharged with AI. Elite quality at unprecedented speed. Proven on a live brand with 100% revenue growth in 3 months.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jeko:wght@800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+/* ============================================
+   JUNCTION AI — DESIGN SYSTEM
+   Colors: #0d0d0d, #00BFFF, #884DFF, #FF00BF
+   Fonts: Poppins (+ Jeko if loaded)
+   ============================================ */
 
 :root {
-  --black:  #0d0d0d;
-  --white:  #FFFFFF;
-  --cyan:   #00BFFF;
+  --black: #0d0d0d;
+  --white: #FFFFFF;
+  --cyan: #00BFFF;
   --violet: #884DFF;
   --cerise: #FF00BF;
-  --gray:   #555566;
+  --gray: #555566;
   --silver: #9999aa;
   --border: rgba(255,255,255,0.07);
-  --surf:   rgba(255,255,255,0.03);
-  --grad:   linear-gradient(135deg,#00BFFF 0%,#884DFF 50%,#FF00BF 100%);
-  --grad90: linear-gradient(90deg, #00BFFF 0%,#884DFF 55%,#FF00BF 100%);
+  --surf: rgba(255,255,255,0.03);
+  --grad: linear-gradient(135deg, #00BFFF 0%, #884DFF 50%, #FF00BF 100%);
+  --grad90: linear-gradient(90deg, #00BFFF 0%, #884DFF 55%, #FF00BF 100%);
 }
 
-html { scroll-behavior:smooth; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
-  background:var(--black); color:var(--white);
-  font-family:'Poppins',sans-serif; font-weight:400;
-  line-height:1.6; overflow-x:hidden;
-}
-body::after {
-  content:''; position:fixed; inset:0; z-index:999; pointer-events:none;
-  opacity:.018;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:200px;
+  font-family: 'Poppins', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1,h2,h3,h4,.jeko { font-family:'Jeko','Poppins',sans-serif; font-weight:800; }
-.gt { background:var(--grad90); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
 
-.wrap   { max-width:1140px; margin:0 auto; padding:0 52px; }
-section { position:relative; z-index:2; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); letter-spacing: -2.5px; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -2px; }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); letter-spacing: -0.5px; }
+h4 { font-size: 1.1rem; letter-spacing: -0.3px; }
 
 .label {
-  display:inline-block; font-size:11px; letter-spacing:3.5px;
-  text-transform:uppercase; color:var(--violet); font-weight:500; margin-bottom:18px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 1rem;
+  display: block;
 }
 
-/* Buttons */
+.text-silver { color: var(--silver); }
+.text-gray { color: var(--gray); }
+
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 8rem 0;
+  position: relative;
+}
+
+.section + .section {
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
 .btn {
-  display:inline-flex; align-items:center; gap:8px;
-  padding:14px 30px; border-radius:9px; font-size:14px; font-weight:600;
-  text-decoration:none; cursor:pointer; border:none; transition:all .22s;
-  font-family:'Poppins',sans-serif; white-space:nowrap; letter-spacing:-.1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: 60px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  border: none;
+  text-decoration: none;
 }
-.btn-grad  { background:var(--grad); color:#fff; box-shadow:0 0 40px rgba(136,77,255,.22); }
-.btn-grad:hover { transform:translateY(-2px); box-shadow:0 8px 48px rgba(136,77,255,.42); }
-.btn-ghost { background:transparent; color:var(--silver); border:1px solid var(--border); }
-.btn-ghost:hover { border-color:rgba(255,255,255,.22); color:#fff; }
-.btn-lg { padding:17px 40px; font-size:15px; border-radius:11px; }
 
-/* ─── NAV ─── */
+.btn-grad {
+  background: var(--grad);
+  color: var(--white);
+  box-shadow: 0 0 30px rgba(136, 77, 255, 0.3);
+}
+
+.btn-grad:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(136, 77, 255, 0.5);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
 nav {
-  position:fixed; top:0; left:0; right:0; z-index:500;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:17px 52px;
-  background:rgba(13,13,13,.82);
-  backdrop-filter:blur(28px) saturate(1.5);
-  border-bottom:1px solid var(--border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.2rem 0;
+  background: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(28px) saturate(1.5);
+  border-bottom: 1px solid var(--border);
 }
-.nav-logo img { height:28px; }
-.nav-links { display:flex; gap:32px; list-style:none; }
-.nav-links a { color:var(--silver); text-decoration:none; font-size:14px; transition:color .2s; }
-.nav-links a:hover { color:#fff; }
-.nav-right { display:flex; gap:10px; }
 
-/* ─── HERO ─── */
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.nav-logo span { color: var(--violet); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--silver);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta { margin-left: 1rem; }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
 .hero {
-  min-height:100vh;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:140px 52px 80px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 6rem;
+  position: relative;
+  overflow: hidden;
 }
+
 .hero::before {
-  content:''; position:absolute; top:-5%; left:50%; transform:translateX(-50%);
-  width:1000px; height:700px; border-radius:50%;
-  background:radial-gradient(ellipse at center, rgba(136,77,255,.09) 0%, rgba(0,191,255,.04) 40%, transparent 70%);
-  pointer-events:none;
-}
-.hero-eyebrow {
-  display:inline-flex; align-items:center; gap:9px;
-  border:1px solid rgba(136,77,255,.25); background:rgba(136,77,255,.07);
-  border-radius:100px; padding:6px 18px;
-  font-size:11px; letter-spacing:2px; text-transform:uppercase;
-  color:var(--silver); margin-bottom:32px;
-}
-.dot { width:6px; height:6px; border-radius:50%; background:var(--grad); flex-shrink:0; }
-.hero h1 {
-  font-size:clamp(52px,7vw,104px);
-  line-height:.97; letter-spacing:-3.5px;
-  max-width:900px; margin-bottom:28px;
-}
-.hero p {
-  font-size:clamp(16px,1.8vw,19px); color:var(--silver);
-  max-width:520px; margin-bottom:52px; line-height:1.78; font-weight:300;
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(136, 77, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-/* Hero product cards — equally weighted */
-.hero-products {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:16px; width:100%; max-width:720px; margin-bottom:40px;
+.hero-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
 }
-.hero-product {
-  background:var(--surf); border:1px solid var(--border); border-radius:14px;
-  padding:28px 28px 24px; text-align:left; text-decoration:none; color:var(--white);
-  transition:all .25s; position:relative; overflow:hidden;
+
+.hero-content h1 {
+  margin-bottom: 1.5rem;
 }
-.hero-product::before {
-  content:''; position:absolute; inset:0;
-  background:var(--grad); opacity:0; transition:opacity .25s;
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--silver);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
 }
-.hero-product:hover { border-color:rgba(136,77,255,.4); transform:translateY(-2px); }
-.hero-product:hover::before { opacity:.04; }
-.hp-tag {
-  font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
-  font-weight:600; margin-bottom:12px;
-  display:block; position:relative; z-index:1;
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 4rem;
 }
-.hp-tag.personal { color:var(--cyan); }
-.hp-tag.business { color:var(--cerise); }
-.hero-product h3 {
-  font-size:18px; letter-spacing:-.3px; margin-bottom:8px;
-  position:relative; z-index:1;
+
+.hero-proof {
+  display: flex;
+  gap: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
 }
-.hero-product p {
-  font-size:13px; color:var(--silver); line-height:1.6; margin-bottom:18px;
-  font-weight:300; position:relative; z-index:1;
+
+.hero-proof-item h3 {
+  font-size: 2rem;
+  letter-spacing: -1px;
 }
-.hp-cta {
-  display:inline-flex; align-items:center; gap:6px;
-  font-size:13px; font-weight:600; position:relative; z-index:1;
+
+.hero-proof-item p {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 0;
 }
-.hp-cta.personal { background:var(--grad90); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.hp-cta.business { color:var(--cerise); }
 
-/* ─── IMAGINE / PERSONAL ─── */
-.imagine { padding:130px 0 100px; background:linear-gradient(180deg,rgba(0,191,255,.025) 0%,transparent 40%,transparent 80%,rgba(0,191,255,.015) 100%); }
+/* ============================================
+   GLASS CARDS
+   ============================================ */
 
-.imagine-intro { max-width:700px; margin-bottom:72px; }
-.imagine-intro h2 { font-size:clamp(38px,4.5vw,68px); line-height:1.03; letter-spacing:-2.5px; margin-bottom:20px; }
-.imagine-intro p  { font-size:17px; color:var(--silver); line-height:1.8; font-weight:300; }
-
-/* Persona cards */
-.persona-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:20px; }
-.persona-note  { font-size:12px; color:var(--gray); margin-bottom:64px; letter-spacing:.3px; }
-
-.persona-card { border-radius:16px; overflow:hidden; position:relative; transition:transform .3s, box-shadow .3s; }
-.persona-card:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.55); }
-
-.persona-photo { height:300px; position:relative; overflow:hidden; background:#191920; }
-/* photo slot — swap in <img> when ready */
-.persona-photo img {
-  width:100%; height:100%; object-fit:cover; object-position:top center;
-  filter:grayscale(100%) contrast(1.1);
-  display:block;
+.glass-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  backdrop-filter: blur(28px) saturate(1.5);
+  transition: all 0.25s ease;
 }
-/* gradient colour-gel over photo / placeholder */
-.persona-photo::after {
-  content:''; position:absolute; inset:0; z-index:1;
-  mix-blend-mode:screen; pointer-events:none;
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.12);
 }
-.persona-card:nth-child(1) .persona-photo::after { background:linear-gradient(160deg,rgba(0,191,255,.2) 0%,rgba(136,77,255,.25) 60%,rgba(255,0,191,.15) 100%); }
-.persona-card:nth-child(2) .persona-photo::after { background:linear-gradient(160deg,rgba(136,77,255,.22) 0%,rgba(255,0,191,.28) 65%,rgba(0,191,255,.1) 100%); }
-.persona-card:nth-child(3) .persona-photo::after { background:linear-gradient(160deg,rgba(0,191,255,.25) 0%,rgba(136,77,255,.2) 55%,rgba(255,0,191,.18) 100%); }
-.persona-card:nth-child(4) .persona-photo::after { background:linear-gradient(160deg,rgba(255,0,191,.18) 0%,rgba(136,77,255,.24) 60%,rgba(0,191,255,.12) 100%); }
-/* fade to body */
-.persona-photo::before { content:''; position:absolute; bottom:0; left:0; right:0; height:55%; background:linear-gradient(to bottom,transparent,#141418); z-index:2; }
 
-/* placeholder initial (hidden once img added) */
-.persona-initial {
-  position:absolute; bottom:-14px; left:50%; transform:translateX(-50%);
-  font-family:'Jeko',sans-serif; font-weight:800;
-  font-size:200px; line-height:1; color:rgba(255,255,255,.055);
-  user-select:none; pointer-events:none; letter-spacing:-8px; z-index:0;
+/* ============================================
+   PROBLEM SECTION
+   ============================================ */
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
-.persona-domain {
-  position:absolute; bottom:13px; left:16px; z-index:3;
-  font-size:9.5px; letter-spacing:2px; text-transform:uppercase;
-  color:rgba(255,255,255,.45); font-weight:500;
+
+.problem-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
 }
-.persona-body { background:#131318; border:1px solid var(--border); border-top:none; border-radius:0 0 16px 16px; padding:20px 20px 24px; }
-.persona-body h3 { font-size:16px; letter-spacing:-.2px; margin-bottom:7px; }
-.persona-body p  { font-size:12.5px; color:var(--silver); line-height:1.65; font-style:italic; }
 
-/* Agent type cards — brand symbols, no emoji */
-.agent-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:52px; }
-.agent-card {
-  border:1px solid rgba(0,191,255,.1); border-radius:12px; padding:28px;
-  background:rgba(0,191,255,.03); transition:all .25s;
+.problem-card .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
-.agent-card:hover { border-color:rgba(136,77,255,.3); transform:translateY(-2px); }
 
-/* brand symbol using CSS — gradient filled geometric mark */
-.agent-sym {
-  width:36px; height:36px; margin-bottom:16px;
-  display:flex; align-items:center; justify-content:center;
+.problem-card h4 {
+  margin-bottom: 0.75rem;
 }
-.agent-sym svg { width:100%; height:100%; }
 
-.agent-card h4 { font-size:14px; margin-bottom:7px; letter-spacing:-.2px; }
-.agent-card p  { font-size:12.5px; color:var(--silver); line-height:1.6; }
-
-/* Personal pricing strip */
-.personal-strip {
-  display:flex; align-items:center; justify-content:space-between;
-  flex-wrap:wrap; gap:24px;
-  background:var(--surf); border:1px solid var(--border);
-  border-radius:14px; padding:32px 40px;
+.problem-card p {
+  font-size: 0.9rem;
+  color: var(--silver);
 }
-.strip-left h3 { font-size:21px; letter-spacing:-.4px; margin-bottom:6px; }
-.strip-left p  { font-size:14px; color:var(--silver); }
-.strip-pricing { }
-.strip-price   { font-family:'Jeko',sans-serif; font-size:44px; font-weight:800; line-height:1; }
-.strip-breakdown { font-size:12px; color:var(--gray); margin-top:6px; line-height:1.5; }
 
-/* Pricing clarity note */
-.pricing-clarity {
-  background:rgba(0,191,255,.04); border:1px solid rgba(0,191,255,.15);
-  border-radius:10px; padding:18px 24px; margin-top:16px;
-  font-size:13px; color:var(--silver); line-height:1.7;
+/* ============================================
+   HOW IT WORKS
+   ============================================ */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
-.pricing-clarity strong { color:var(--white); }
 
-/* Cost breakdown table */
-.cost-table-wrap { margin-top:32px; }
-.cost-assumptions { font-size:12px; color:var(--gray); margin-bottom:16px; letter-spacing:.2px; }
-.cost-table {
-  width:100%; border-collapse:collapse;
-  font-size:13px; font-family:'Poppins',sans-serif;
+.process-step {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  position: relative;
 }
-.cost-table thead th {
-  text-align:left; font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
-  color:var(--violet); font-weight:500; padding:0 16px 12px 0;
-  border-bottom:1px solid var(--border);
+
+.process-step .step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--grad);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
-.cost-table thead th:last-child { text-align:right; padding-right:0; }
-.cost-table tbody tr { border-bottom:1px solid var(--border); }
-.cost-table tbody tr:last-child { border-bottom:none; }
-.cost-table.row-highlight { background:rgba(136,77,255,.04); }
-.cost-table tbody td { padding:14px 16px 14px 0; color:var(--silver); vertical-align:middle; }
-.cost-table tbody td:last-child { padding-right:0; }
-.cost-table td.num { text-align:right; font-variant-numeric:tabular-nums; color:var(--white); }
-.cost-table td.fee { color:var(--violet); }
-.cost-table td.total { color:var(--cyan); font-weight:600; font-size:14px; }
-.tier-badge {
-  display:inline-block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
-  padding:3px 9px; border-radius:20px; font-weight:500;
+
+.process-step h4 { margin-bottom: 0.75rem; }
+
+.process-step p {
+  font-size: 0.88rem;
+  color: var(--silver);
 }
-.tier-light  { background:rgba(255,255,255,.06); color:var(--silver); }
-.tier-avg    { background:rgba(136,77,255,.15); color:var(--violet); }
-.tier-heavy  { background:rgba(0,191,255,.1); color:var(--cyan); }
-.row-highlight td { background:rgba(136,77,255,.04); }
-.cost-note { font-size:12px; color:var(--gray); margin-top:18px; line-height:1.7; max-width:620px; }
 
-/* ─── BUSINESS BRIDGE ─── */
-.bridge { padding:130px 0; background:linear-gradient(180deg,transparent,rgba(136,77,255,.04) 50%,transparent); }
-.bridge-inner { max-width:820px; margin-bottom:72px; }
-.bridge-inner h2 { font-size:clamp(38px,4.5vw,68px); line-height:1.03; letter-spacing:-2.5px; margin-bottom:22px; }
-.bridge-inner p  { font-size:17px; color:var(--silver); line-height:1.8; font-weight:300; margin-bottom:16px; }
+/* ============================================
+   SERVICES / WHAT'S INCLUDED
+   ============================================ */
 
-.mkt-agent-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:52px; }
-.mkt-agent {
-  border:1px solid var(--border); border-radius:12px; padding:24px 16px;
-  background:var(--surf); text-align:center; transition:all .25s;
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
-.mkt-agent:hover { border-color:rgba(136,77,255,.3); transform:translateY(-2px); }
-.mkt-sym { width:32px; height:32px; margin:0 auto 12px; }
-.mkt-sym svg { width:100%; height:100%; }
-.mkt-agent h4 { font-size:13px; font-weight:600; margin-bottom:5px; }
-.mkt-agent p  { font-size:11.5px; color:var(--silver); line-height:1.5; }
 
-.bridge-quote {
-  border-left:2px solid var(--violet);
-  padding:20px 28px; background:var(--surf); border-radius:0 10px 10px 0;
-  font-size:16px; line-height:1.75; color:var(--silver); font-weight:300;
+.service-card {
+  padding: 2.5rem;
 }
-.bridge-quote strong { color:#fff; font-weight:500; }
 
-/* coming soon strip */
-.coming-strip {
-  margin-top:28px;
-  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-  border:1px dashed rgba(255,255,255,.1); border-radius:10px;
-  padding:20px 28px; background:rgba(255,255,255,.015);
+.service-card .service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(136, 77, 255, 0.1);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
 }
-.cs-badge {
-  font-size:10px; letter-spacing:2px; text-transform:uppercase;
-  color:var(--gray); border:1px solid rgba(255,255,255,.1); border-radius:100px;
-  padding:3px 12px; flex-shrink:0;
+
+.service-card h4 { margin-bottom: 0.75rem; }
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--silver);
+  line-height: 1.7;
 }
-.coming-strip p { font-size:14px; color:var(--silver); flex:1; }
 
-/* ─── ABOUT ─── */
-.about { padding:130px 0; }
-.about-split { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; margin-bottom:80px; }
-.about-left h2 { font-size:clamp(34px,3.8vw,54px); letter-spacing:-1.5px; line-height:1.08; margin-bottom:22px; }
-.about-left p  { font-size:16px; color:var(--silver); line-height:1.8; font-weight:300; margin-bottom:18px; }
-.about-right   { display:flex; flex-direction:column; gap:16px; padding-top:8px; }
-.about-card    { background:var(--surf); border:1px solid var(--border); border-radius:12px; padding:26px; }
-.about-card h4 { font-size:14px; margin-bottom:8px; }
-.about-card p  { font-size:13px; color:var(--silver); line-height:1.65; }
+/* ============================================
+   PRICING
+   ============================================ */
 
-.tom-block  { background:var(--surf); border:1px solid var(--border); border-radius:18px; padding:52px; }
-.tom-inner  { display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:start; }
-.tom-avatar {
-  width:80px; height:80px; border-radius:50%; overflow:hidden;
-  background:var(--grad); display:flex; align-items:center; justify-content:center;
-  font-family:'Jeko',sans-serif; font-size:28px; font-weight:800; flex-shrink:0;
-  box-shadow:0 0 40px rgba(136,77,255,.3);
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
 }
-.tom-avatar img { width:100%; height:100%; object-fit:cover; object-position:top center; filter:grayscale(15%) contrast(1.05); }
-.tom-right h3     { font-size:22px; letter-spacing:-.4px; margin-bottom:4px; }
-.tom-right .role  { font-size:14px; color:var(--silver); margin-bottom:22px; }
-.tom-stats        { display:flex; gap:36px; margin-bottom:22px; flex-wrap:wrap; }
-.tsv { font-family:'Jeko',sans-serif; font-size:30px; font-weight:800; background:var(--grad90); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.tsl { font-size:11px; color:var(--gray); letter-spacing:1px; text-transform:uppercase; }
-.tom-clients { display:flex; flex-wrap:wrap; gap:8px; }
-.chip { border:1px solid var(--border); border-radius:6px; padding:5px 14px; font-size:12px; color:var(--silver); background:rgba(255,255,255,.02); }
-.chip.chip-hi { border-color:rgba(0,191,255,.25); color:var(--cyan); background:rgba(0,191,255,.05); }
 
-/* ─── PACKAGES ─── */
-.packages { padding:130px 0; }
-.packages-header { text-align:center; margin-bottom:56px; }
-.packages-header h2 { font-size:clamp(36px,4vw,58px); letter-spacing:-2px; margin-bottom:12px; }
-.packages-header p  { font-size:16px; color:var(--silver); }
-
-.pkg-toggle { display:flex; justify-content:center; margin-bottom:52px; }
-.toggle-wrap { display:flex; gap:3px; padding:4px; background:var(--surf); border:1px solid var(--border); border-radius:11px; }
-.toggle-btn {
-  padding:11px 32px; border-radius:8px; font-size:14px; font-weight:600;
-  cursor:pointer; color:var(--silver); transition:all .2s; border:none;
-  background:transparent; font-family:'Poppins',sans-serif;
+.pricing-card {
+  padding: 3rem;
+  position: relative;
 }
-.toggle-btn.active { background:var(--grad); color:#fff; box-shadow:0 2px 20px rgba(136,77,255,.3); }
 
-.pkg-panel { display:none; }
-.pkg-panel.active { display:block; }
-
-.pkg-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.pkg-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-
-.pkg-card {
-  background:var(--surf); border:1px solid var(--border);
-  border-radius:16px; padding:40px; display:flex; flex-direction:column;
+.pricing-card.featured {
+  border-color: rgba(136, 77, 255, 0.3);
+  box-shadow: 0 0 40px rgba(136, 77, 255, 0.08);
 }
-.pkg-card.hi {
-  border-color:rgba(136,77,255,.35); background:rgba(136,77,255,.05);
-  box-shadow:0 0 80px rgba(136,77,255,.1);
+
+.pricing-card .pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 2rem;
+  background: var(--grad);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
-.pkg-card.dim { opacity:.6; border-style:dashed; }
 
-.pkg-name  { font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gray); margin-bottom:20px; }
-.pkg-price { margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--border); }
-.pkg-price .amount { font-family:'Jeko',sans-serif; font-size:52px; font-weight:800; }
-.pkg-price .unit   { font-size:14px; color:var(--gray); margin-left:4px; }
-.pkg-price .note   { font-size:12px; color:var(--gray); margin-top:6px; }
-.pkg-desc  { font-size:14px; color:var(--silver); line-height:1.65; margin-bottom:24px; font-weight:300; }
-.pkg-feats { list-style:none; flex:1; display:flex; flex-direction:column; gap:11px; margin-bottom:32px; }
-.pkg-feats li { display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:var(--silver); line-height:1.5; }
-.pkg-feats li::before { content:'✓'; color:var(--cyan); font-weight:700; flex-shrink:0; margin-top:2px; }
-
-.coming-tag { display:inline-block; padding:4px 12px; border-radius:100px; border:1px solid rgba(255,255,255,.12); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); margin-bottom:18px; }
-
-/* ─── CTA ─── */
-.cta { padding:150px 0; text-align:center; position:relative; overflow:hidden; }
-.cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 90% 60% at 50% 50%,rgba(136,77,255,.08),transparent 70%); pointer-events:none; }
-.cta-inner { position:relative; z-index:1; max-width:720px; margin:0 auto; padding:0 52px; }
-.cta-inner h2 { font-size:clamp(42px,5.5vw,80px); letter-spacing:-2.5px; line-height:1.0; margin-bottom:22px; }
-.cta-inner p  { font-size:18px; color:var(--silver); margin-bottom:52px; line-height:1.7; font-weight:300; }
-
-/* Two CTA cards */
-.cta-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.cta-card {
-  border-radius:14px; padding:32px; text-align:left;
-  text-decoration:none; transition:all .25s;
+.pricing-card h3 {
+  margin-bottom: 0.5rem;
 }
-.cta-card.personal { background:rgba(0,191,255,.06); border:1px solid rgba(0,191,255,.2); }
-.cta-card.business { background:rgba(255,0,191,.05); border:1px solid rgba(255,0,191,.18); }
-.cta-card:hover { transform:translateY(-3px); }
-.cta-card.personal:hover { box-shadow:0 12px 48px rgba(0,191,255,.18); }
-.cta-card.business:hover { box-shadow:0 12px 48px rgba(255,0,191,.18); }
-.cta-card-tag { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; font-weight:600; margin-bottom:12px; display:block; }
-.cta-card.personal .cta-card-tag { color:var(--cyan); }
-.cta-card.business .cta-card-tag { color:var(--cerise); }
-.cta-card h3 { font-size:19px; letter-spacing:-.3px; margin-bottom:8px; }
-.cta-card p  { font-size:13px; color:var(--silver); line-height:1.6; margin-bottom:20px; font-weight:300; }
-.cta-link    { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; }
-.cta-card.personal .cta-link { background:var(--grad90); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.cta-card.business .cta-link { color:var(--cerise); }
 
-/* ─── FOOTER ─── */
-footer { padding:32px 52px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
-footer img { height:22px; opacity:.45; }
-.footer-links { display:flex; gap:26px; }
-.footer-links a { font-size:13px; color:var(--gray); text-decoration:none; }
-.footer-links a:hover { color:var(--silver); }
-footer p { font-size:13px; color:var(--gray); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width:960px) {
-  nav { padding:15px 24px; }
-  .nav-links { display:none; }
-  .wrap { padding:0 24px; }
-  .hero { padding:120px 24px 80px; }
-  .hero-products { grid-template-columns:1fr; max-width:400px; }
-  .persona-grid { grid-template-columns:1fr 1fr; }
-  .agent-row { grid-template-columns:1fr 1fr; }
-  .mkt-agent-grid { grid-template-columns:repeat(3,1fr); }
-  .about-split { grid-template-columns:1fr; gap:40px; }
-  .tom-inner { grid-template-columns:1fr; }
-  .pkg-grid,.pkg-grid-3 { grid-template-columns:1fr; }
-  .cta-cards { grid-template-columns:1fr; }
-  .cta-inner { padding:0 24px; }
-  .tom-block { padding:32px; }
-  footer { flex-direction:column; text-align:center; padding:28px 24px; }
-  footer img { margin:0 auto; }
-  .footer-links { justify-content:center; }
-  .imagine { padding:80px 0 60px; }
-  .packages { padding:80px 0; }
-  .about { padding:80px 0; }
-  .cta { padding:100px 0; }
+.pricing-card .price-desc {
+  font-size: 0.95rem;
+  color: var(--silver);
+  margin-bottom: 2rem;
+  line-height: 1.7;
 }
-@media (max-width:600px) {
-  .hero { padding:100px 20px 60px; }
-  .hero h1 { font-size:clamp(36px,10vw,56px); letter-spacing:-2px; }
-  .hero-eyebrow { font-size:11px; }
-  .nav-right .btn-ghost { display:none; }
-  .persona-grid { grid-template-columns:1fr; }
-  .agent-row { grid-template-columns:1fr; }
-  .mkt-agent-grid { grid-template-columns:1fr 1fr; }
-  .persona-grid { grid-template-columns:1fr 1fr; }
-  .persona-photo { height:220px; }
-  .personal-strip { flex-direction:column; align-items:flex-start; padding:20px; gap:12px; }
-  .personal-strip .btn { width:100%; text-align:center; }
-  .tom-block { padding:24px; border-radius:14px; }
-  .tom-stats { gap:20px; }
-  .tsv { font-size:24px; }
-  .cta-inner { padding:0 20px; }
-  .cta-inner h2 { letter-spacing:-1.5px; }
-  .cta-inner p { font-size:16px; margin-bottom:36px; }
-  .pkg-price .amount { font-size:40px; }
-  .cost-table { font-size:12px; }
-  .cost-table tbody td { padding:10px 8px 10px 0; }
-  .tier-badge { font-size:10px; padding:3px 8px; }
-  .imagine-intro h2 { letter-spacing:-1.5px; }
-  .packages-header h2 { letter-spacing:-1.5px; }
-  .hero-product { padding:24px; }
-  .pkg-card { padding:28px 24px; }
-  .wrap { padding:0 20px; }
-  .about-card { padding:20px; }
-  .section-label { font-size:10px; }
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.pricing-features li {
+  padding: 0.6rem 0;
+  font-size: 0.9rem;
+  color: var(--silver);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pricing-features li::before {
+  content: '✓';
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   CASE STUDY
+   ============================================ */
+
+.case-study-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.metric-card {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.metric-card h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.metric-card p {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.case-details h3 {
+  margin-bottom: 1rem;
+}
+
+.case-details p {
+  color: var(--silver);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.case-list {
+  list-style: none;
+}
+
+.case-list li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--silver);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.case-list li::before {
+  content: '→';
+  color: var(--violet);
+  font-weight: 700;
+}
+
+/* ============================================
+   COMPARISON TABLE
+   ============================================ */
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 3rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+.comparison-table th {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.comparison-table td:first-child {
+  color: var(--silver);
+}
+
+.comparison-table td:last-child {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.comparison-table .highlight-col {
+  background: rgba(136, 77, 255, 0.04);
+}
+
+/* ============================================
+   FAQ
+   ============================================ */
+
+.faq-list {
+  max-width: 800px;
+  margin: 3rem auto 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 0;
+}
+
+.faq-question .toggle {
+  font-size: 1.5rem;
+  color: var(--violet);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer p {
+  padding-top: 1rem;
+  color: var(--silver);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+
+.faq-item.open .toggle {
+  transform: rotate(45deg);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta-section {
+  text-align: center;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60%;
+  background: radial-gradient(ellipse at center bottom, rgba(136, 77, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section h2 { margin-bottom: 1rem; }
+
+.cta-section p {
+  color: var(--silver);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+footer .footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+footer .footer-links a {
+  font-size: 0.85rem;
+  color: var(--silver);
+  transition: color 0.2s;
+}
+
+footer .footer-links a:hover { color: var(--white); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 968px) {
+  .problem-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .case-study-content { grid-template-columns: 1fr; }
+  .comparison-table { font-size: 0.85rem; }
+  .hero-proof { gap: 2rem; flex-wrap: wrap; }
+}
+
+@media (max-width: 640px) {
+  .section { padding: 5rem 0; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .case-metrics { grid-template-columns: 1fr 1fr; }
+  .hero-buttons { flex-direction: column; }
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  footer .container { flex-direction: column; gap: 1.5rem; text-align: center; }
+  footer .footer-links { justify-content: center; }
+  .comparison-table th, .comparison-table td { padding: 0.8rem; font-size: 0.82rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
 <nav>
-  <a href="#" class="nav-logo"><img src="logo-dark.png" alt="Junction AI"></a>
-  <ul class="nav-links">
-    <li><a href="#personal">Personal</a></li>
-    <li><a href="#marketing">Marketing</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#packages">Packages</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="#cta" class="btn btn-ghost" style="padding:10px 22px;font-size:13px;">Talk to us</a>
-    <a href="https://app.getjunction.ai/login" class="btn btn-grad" style="padding:10px 22px;font-size:13px;">Get started →</a>
+  <div class="container">
+    <a href="#" class="nav-logo"><!-- Replace with logo: <img src="logo.svg" alt="Junction AI" height="32"> -->Junction <span>AI</span></a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#services">What's Included</a></li>
+      <li><a href="#proof">Results</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li class="nav-cta"><a href="#book" class="btn btn-grad">Book a Call</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow"><span class="dot"></span>Personal agents &amp; marketing OS — available now</div>
-  <h1>The world's greatest<br>minds. <span class="gt">Working for you.</span></h1>
-  <p>A personal AI mentor trained on world-class expertise. Or a fully autonomous AI marketing operation for your business. Built, deployed, running.</p>
-
-  <div class="hero-products">
-    <a href="#personal" class="hero-product">
-      <span class="hp-tag personal">Personal OS</span>
-      <h3>Your own AI mentor</h3>
-      <p>Daily guidance from an agent trained on the world's greatest thinkers, coaches, and achievers — tailored entirely to your life.</p>
-      <span class="hp-cta personal">Set up your agent →</span>
-    </a>
-    <a href="#marketing" class="hero-product">
-      <span class="hp-tag business">Marketing OS</span>
-      <h3>Autonomous marketing</h3>
-      <p>A full AI marketing operation for your brand — strategy, content, campaigns, and reporting running 24/7 without you.</p>
-      <span class="hp-cta business">See how it works →</span>
-    </a>
-  </div>
-</section>
-
-<!-- PERSONAL / IMAGINE -->
-<section class="imagine" id="personal">
-  <div class="wrap">
-    <div class="imagine-intro">
-      <div class="label">Personal AI Agents</div>
-      <h2>Imagine having the world's<br>best <span class="gt">in your corner.</span></h2>
-      <p>The greatest coaches, thinkers, investors, and achievers — as your daily mentors. Tracking your progress, holding you accountable, pushing you to grow. At a level of support most people never get access to.</p>
-    </div>
-
-    <!-- Persona cards — add real photos via <img> inside .persona-photo -->
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-photo">
-          <img src="photos/kobe.jpg" alt="Kobe Bryant">
-          <div class="persona-initial">K</div>
-          <div class="persona-domain">Motivation &amp; Excellence</div>
-        </div>
-        <div class="persona-body">
-          <h3>Kobe Bryant</h3>
-          <p>"Messaging you every morning. Holding you to the standard he held himself."</p>
-        </div>
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero section">
+  <div class="container">
+    <div class="hero-content">
+      <span class="label">Expert Marketing, Powered by AI</span>
+      <h1>10+ years of expertise.<br><span class="grad-text">The next generation of marketing.</span></h1>
+      <p>We're real marketers with deep experience — now applying that expertise through AI systems that produce elite-quality work at unprecedented speed. One source of truth. Every channel connected. Intelligence that compounds.</p>
+      <div class="hero-buttons">
+        <a href="#book" class="btn btn-grad">Book a Discovery Call</a>
+        <a href="#proof" class="btn btn-ghost">See the Results</a>
       </div>
-      <div class="persona-card">
-        <div class="persona-photo">
-          <img src="photos/marcus.jpg" alt="Marcus Aurelius">
-          <div class="persona-initial">M</div>
-          <div class="persona-domain">Stoic Wisdom &amp; Character</div>
+      <div class="hero-proof">
+        <div class="hero-proof-item">
+          <h3 class="grad-text">100%</h3>
+          <p>Revenue growth in 3 months</p>
         </div>
-        <div class="persona-body">
-          <h3>Marcus Aurelius</h3>
-          <p>"Daily clarity. Stoic counsel. Calling you out when you're rationalising instead of acting."</p>
+        <div class="hero-proof-item">
+          <h3 class="grad-text">7.78x</h3>
+          <p>ROAS on Meta Ads</p>
         </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-photo">
-          <img src="photos/huberman.jpg" alt="Andrew Huberman">
-          <div class="persona-initial">H</div>
-          <div class="persona-domain">Health &amp; Cognitive Performance</div>
+        <div class="hero-proof-item">
+          <h3 class="grad-text">10-20x</h3>
+          <p>Productivity increase</p>
         </div>
-        <div class="persona-body">
-          <h3>Andrew Huberman</h3>
-          <p>"Tracking your sleep, focus, and energy. Delivering daily protocols tailored to where you are."</p>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="persona-photo">
-          <img src="photos/munger.jpg" alt="Charlie Munger">
-          <div class="persona-initial">C</div>
-          <div class="persona-domain">Wealth &amp; Investment Thinking</div>
-        </div>
-        <div class="persona-body">
-          <h3>Charlie Munger</h3>
-          <p>"Decades of pattern recognition. Compounding wisdom. Zero tolerance for self-deception."</p>
-        </div>
-      </div>
-    </div>
-
-
-    <p style="font-size:16px;color:var(--silver);max-width:680px;line-height:1.8;font-weight:300;margin-bottom:52px;">It doesn't have to be one of these. <strong style="color:#fff;font-weight:500;">Your agent can be built around any expertise — any author, framework, or set of principles.</strong> Whatever you want to improve, we build an agent that is world-class, specialised, and shaped entirely around your situation, your goals, your timezone.</p>
-
-    <!-- Agent types — geometric brand symbols, no emoji -->
-    <div class="agent-row">
-
-      <div class="agent-card">
-        <div class="agent-sym">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <circle cx="18" cy="18" r="10" stroke="url(#g1)" stroke-width="2"/>
-            <circle cx="18" cy="18" r="4"  fill="url(#g1)"/>
-          </svg>
-        </div>
-        <h4>Brain &amp; Wellness</h4>
-        <p>Sleep, cognition, energy, mental clarity. Daily check-ins and evidence-based guidance from your chosen experts.</p>
-      </div>
-
-      <div class="agent-card">
-        <div class="agent-sym">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <rect x="4" y="4" width="28" height="28" rx="3" stroke="url(#g2)" stroke-width="2"/>
-            <path d="M11 18l5 5 9-9" stroke="url(#g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Accountability</h4>
-        <p>Daily check-ins, goal tracking, habit loops. Remembers what you committed to — and holds you to it.</p>
-      </div>
-
-      <div class="agent-card">
-        <div class="agent-sym">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g3" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <path d="M6 10h24M6 16h18M6 22h20M6 28h14" stroke="url(#g3)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h4>Learning &amp; Education</h4>
-        <p>Daily lessons built from authors and frameworks you choose. World-class expertise, delivered in your context every day.</p>
-      </div>
-
-      <div class="agent-card">
-        <div class="agent-sym">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g4" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <path d="M8 24V14a10 10 0 1 1 20 0v10" stroke="url(#g4)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M4 22h6v6H4zM26 22h6v6h-6z" stroke="url(#g4)" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Life Support</h4>
-        <p>Thinking partner, reflection, emotional clarity. For big decisions, difficult patches, or thinking you need to do out loud.</p>
-      </div>
-
-      <div class="agent-card">
-        <div class="agent-sym">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g5" x1="0" y1="36" x2="36" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <path d="M6 28L14 18l6 6 4-8 6-8" stroke="url(#g5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="30" cy="8" r="2.5" fill="url(#g5)"/>
-          </svg>
-        </div>
-        <h4>Money &amp; Wealth</h4>
-        <p>Financial education, investment thinking, wealth building. Trained on the investors and frameworks you most want to understand.</p>
-      </div>
-
-      <div class="agent-card">
-        <div class="agent-sym">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g6" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <path d="M18 4v28M4 18h28" stroke="url(#g6)" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h4>Build Your Own</h4>
-        <p>Have something specific in mind? Tell us. We'll design and build the agent from the ground up, exactly as you need it.</p>
-      </div>
-
-    </div>
-
-    <!-- Pricing strip -->
-    <div class="personal-strip">
-      <div class="strip-left">
-        <h3>Personal OS — live in 24 hours</h3>
-        <p>Fill out the form. We build your agent. It arrives in your Telegram tomorrow.</p>
-      </div>
-      <div class="strip-pricing">
-        <div class="strip-price gt">$5<span style="font-size:20px;font-family:'Poppins',sans-serif;font-weight:400;color:var(--gray);"> + API</span></div>
-        <div class="strip-breakdown">$5/month service fee + Claude API usage billed at cost</div>
-      </div>
-      <a href="https://app.getjunction.ai/login" class="btn btn-grad btn-lg">Set up yours →</a>
-    </div>
-
-    <div class="pricing-clarity">
-      <strong>How pricing works.</strong> Two line items — Claude API usage (passed through at cost, zero markup) plus our $5/month service fee. We handle billing, infrastructure, system management, and ongoing improvements. The $5 covers all of that.
-    </div>
-
-    <div class="cost-table-wrap">
-      <div class="label" style="margin-bottom:24px;">Real numbers — based on actual daily usage</div>
-      <div class="cost-assumptions">
-        <span>Assumes: 2 scheduled messages/day (morning check-in + evening) + your Telegram messages to the agent</span>
-      </div>
-      <table class="cost-table">
-        <thead>
-          <tr>
-            <th>Usage</th>
-            <th>Daily activity</th>
-            <th>API cost/mo</th>
-            <th>+ Our fee</th>
-            <th>Total/mo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="tier-badge tier-light">Light</span></td>
-            <td>2 msgs/day to agent</td>
-            <td class="num">$0.42–$1.59</td>
-            <td class="num fee">$5.00</td>
-            <td class="num total">~$6–7</td>
-          </tr>
-          <tr class="row-highlight">
-            <td><span class="tier-badge tier-avg">Average</span></td>
-            <td>5 msgs/day to agent</td>
-            <td class="num">$0.72–$2.71</td>
-            <td class="num fee">$5.00</td>
-            <td class="num total">~$6–8</td>
-          </tr>
-          <tr>
-            <td><span class="tier-badge tier-heavy">Heavy</span></td>
-            <td>10 msgs/day to agent</td>
-            <td class="num">$1.22–$4.58</td>
-            <td class="num fee">$5.00</td>
-            <td class="num total">~$7–10</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="cost-note">API cost range = Haiku (standard) → Sonnet (premium). Most personal agents run on Haiku. You'll never pay more than $10/month total — we'll alert you if you're trending above that.</p>
-    </div>
-  </div>
-</section>
-
-<!-- MARKETING BRIDGE -->
-<section class="bridge" id="marketing">
-  <div class="wrap">
-    <div class="bridge-inner">
-      <div class="label">Marketing OS</div>
-      <h2>Now imagine running your<br><span class="gt">marketing autonomously.</span></h2>
-      <p>What if your entire marketing operation — content, campaigns, SEO, ads, email, reporting — ran on AI agents working around the clock? Not a chatbot. Not a dashboard. A fully autonomous marketing department.</p>
-      <p>That's what we've built. And it's what we deploy for our clients.</p>
-    </div>
-
-    <div class="mkt-agent-grid">
-      <div class="mkt-agent">
-        <div class="mkt-sym">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="mg1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <path d="M16 3L4 9v14l12 6 12-6V9L16 3z" stroke="url(#mg1)" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M16 3v26M4 9l12 6 12-6" stroke="url(#mg1)" stroke-width="1.8" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Content &amp; SEO</h4>
-        <p>Articles, social, AEO, GEO — written and published daily</p>
-      </div>
-      <div class="mkt-agent">
-        <div class="mkt-sym">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="mg2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <rect x="3" y="8" width="26" height="18" rx="2" stroke="url(#mg2)" stroke-width="1.8"/>
-            <path d="M3 13l13 8 13-8" stroke="url(#mg2)" stroke-width="1.8" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Email &amp; SMS</h4>
-        <p>Klaviyo flows, campaigns, and retention sequences</p>
-      </div>
-      <div class="mkt-agent">
-        <div class="mkt-sym">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="mg3" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <path d="M4 24L12 14l6 6 4-7 6-7" stroke="url(#mg3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Paid Ads</h4>
-        <p>Meta &amp; Google monitoring, auto-optimisation, daily reporting</p>
-      </div>
-      <div class="mkt-agent">
-        <div class="mkt-sym">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="mg4" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <circle cx="16" cy="16" r="12" stroke="url(#mg4)" stroke-width="1.8"/>
-            <path d="M16 4c0 0-6 5-6 12s6 12 6 12M16 4c0 0 6 5 6 12s-6 12-6 12M4 16h24" stroke="url(#mg4)" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h4>Intelligence</h4>
-        <p>Competitor monitoring, trend detection, strategic briefings</p>
-      </div>
-      <div class="mkt-agent">
-        <div class="mkt-sym">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="mg5" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00BFFF"/><stop offset=".5" stop-color="#884DFF"/><stop offset="1" stop-color="#FF00BF"/></linearGradient></defs>
-            <path d="M16 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="url(#mg5)" stroke-width="1.8" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Customer Intel</h4>
-        <p>Order attribution, LTV, retention triggers, behaviour patterns</p>
-      </div>
-    </div>
-
-    <div class="bridge-quote">
-      <strong>This is not scheduling tools or a CRM add-on.</strong> These are specialised AI agents — each one world-class in its domain, feeding each other intelligence, running 24/7, and continuously optimising your marketing outcomes while you focus on the business.
-    </div>
-
-    <div class="coming-strip">
-      <span class="cs-badge">And soon</span>
-      <p>We're building toward a full Business OS — AI agents across marketing, finance, operations, strategy, and customer intelligence, all working together. We've already started deploying components of this for select clients. If this interests you, <a href="mailto:hello@getjunction.ai" style="color:var(--violet);text-decoration:none;">get in touch</a>.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="wrap">
-    <div class="about-split">
-      <div class="about-left">
-        <div class="label">Our Philosophy</div>
-        <h2>AGI has arrived.<br><span class="gt">Are you ready?</span></h2>
-        <p>The implications for business, for society, for how you live and work — are profound and unlike anything that has come before. Superintelligence is not a distant concept. It is arriving faster than most are prepared for.</p>
-        <p>Most businesses are still operating as if the rules haven't changed. We believe the companies that thrive will be those who move first — who build the systems, develop the judgment, and create the cultural readiness to operate at the frontier.</p>
-        <p>We seek partners who understand that. Who are ambitious about growth and genuinely open to disruptive approaches to running their operations.</p>
-      </div>
-      <div class="about-right">
-        <div class="about-card">
-          <h4>Human judgment + AI capability</h4>
-          <p>The combination of world-class strategic thinking and world-class AI execution is what separates the companies that will thrive. We bring both — Tom's deep marketing experience and the most capable AI systems ever built.</p>
-        </div>
-        <div class="about-card">
-          <h4>The wide spectrum approach</h4>
-          <p>AI has made it possible to do everything well at a fraction of the previous cost. We cover the full spectrum of channels — and decide where to focus based on where the highest leverage is for your specific goals.</p>
-        </div>
-        <div class="about-card">
-          <h4>Always at the frontier</h4>
-          <p>The standards are changing every month. We commit to staying at the absolute cutting edge — continuously integrating the latest capabilities into everything we build and manage for clients.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="tom-block">
-      <div class="tom-inner">
-        <div class="tom-avatar">
-          <img src="photos/tom.png" alt="Tom Hall-Taylor">
-        </div>
-        <div class="tom-right">
-          <h3>Tom Hall-Taylor</h3>
-          <div class="role">Founder, Junction AI &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/tomhalltaylor/" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none;font-size:13px;">LinkedIn →</a></div>
-          <div class="tom-stats">
-            <div><div class="tsv">10+</div><div class="tsl">Years marketing</div></div>
-            <div><div class="tsv">20+</div><div class="tsl">Industries</div></div>
-            <div><div class="tsv">3+</div><div class="tsl">Years daily AI</div></div>
-          </div>
-          <div class="tom-clients">
-            <span class="chip chip-hi">Mercedes AMG F1</span>
-            <span class="chip chip-hi">Royal NZ Yacht Squadron</span>
-            <span class="chip">Founder &amp; Agency Owner</span>
-            <span class="chip">Product &amp; Service Brands</span>
-          </div>
+        <div class="hero-proof-item">
+          <h3 class="grad-text">133+</h3>
+          <p>Campaigns tracked</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PACKAGES -->
-<section class="packages" id="packages">
-  <div class="wrap">
-    <div class="packages-header">
-      <div class="label">Packages</div>
-      <h2>Simple, transparent pricing.</h2>
-      <p>No hidden fees. No long contracts. Personal agents cancel anytime.</p>
-    </div>
-
-    <div class="pkg-toggle">
-      <div class="toggle-wrap">
-        <button class="toggle-btn active" onclick="switchPkg('personal',this)">Personal OS</button>
-        <button class="toggle-btn" onclick="switchPkg('business',this)">Business</button>
+<!-- ============================================
+     PROBLEM
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <span class="label">The Challenge</span>
+    <h2>Marketing today is <span class="grad-text">fragmented</span></h2>
+    <div class="problem-grid">
+      <div class="glass-card problem-card">
+        <div class="icon">⏱</div>
+        <h4>Too Slow</h4>
+        <p>Traditional agencies take 2-4 weeks per campaign. Markets move faster than that. You need speed without sacrificing quality.</p>
       </div>
-    </div>
-
-    <!-- Personal panel -->
-    <div class="pkg-panel active" id="pkg-personal">
-      <div class="pkg-grid" style="margin-bottom:20px;">
-        <div class="pkg-card">
-          <div class="pkg-name">Personal — Starter</div>
-          <div class="pkg-price">
-            <span class="amount gt">$5</span><span class="unit">/ agent / month</span>
-            <div class="note">+ Claude API usage at cost — fully transparent</div>
-          </div>
-          <p class="pkg-desc">One world-class AI agent, built around your goals and trained on your chosen expertise. The ideal starting point.</p>
-          <ul class="pkg-feats">
-            <li>Choose your agent type and area of focus</li>
-            <li>Trained on world-class sources you specify</li>
-            <li>Daily messages tailored to your schedule and timezone</li>
-            <li>Builds context on you and your situation over time</li>
-            <li>Request changes and updates at any time</li>
-            <li>Cancel anytime — no lock-in</li>
-          </ul>
-          <a href="https://app.getjunction.ai/login" class="btn btn-ghost">Get started →</a>
-        </div>
-        <div class="pkg-card hi">
-          <div class="pkg-name">Personal — Full Stack</div>
-          <div class="pkg-price">
-            <span class="amount gt">$5</span><span class="unit">/ agent / month</span>
-            <div class="note">Per agent — build as many as you need</div>
-          </div>
-          <p class="pkg-desc">Multiple agents, each world-class in a different domain. A complete personal AI operating system that compounds over time.</p>
-          <ul class="pkg-feats">
-            <li>Multiple agents — health, accountability, learning, wealth</li>
-            <li>Each trained on different world-class expertise</li>
-            <li>Each learns and improves in its domain over time</li>
-            <li>Different tones and styles per agent — whatever you need</li>
-            <li>One flat rate per agent — no tiers, no surprises</li>
-            <li>Full monthly cost transparency across all agents</li>
-          </ul>
-          <a href="https://app.getjunction.ai/login" class="btn btn-grad">Set up your stack →</a>
-        </div>
+      <div class="glass-card problem-card">
+        <div class="icon">🔀</div>
+        <h4>Siloed Specialties</h4>
+        <p>Email team doesn't talk to the ads team. SEO is separate from social. Every channel runs in isolation with no shared intelligence.</p>
       </div>
-      <div class="pricing-clarity">
-        <strong>Exactly how pricing works:</strong> You pay the Claude API usage fees at cost (we pass these through transparently — no markup) plus our $5/month per agent service fee. We handle the billing, infrastructure, system management, and everything technical. The $5 covers all of that. We keep this price low because we genuinely believe this kind of support should be accessible to everyone.
+      <div class="glass-card problem-card">
+        <div class="icon">📊</div>
+        <h4>Inflated Attribution</h4>
+        <p>Each platform claims credit for the same sale. Meta says one thing, Google says another. Without one source of truth, you're flying blind.</p>
       </div>
-    </div>
-
-    <!-- Business panel -->
-    <div class="pkg-panel" id="pkg-business">
-      <div class="pkg-grid-3">
-
-        <div class="pkg-card">
-          <div class="pkg-name">AI Systems Build</div>
-          <div class="pkg-price">
-            <span class="amount gt" style="font-size:36px;">Custom</span>
-            <div class="note">Scoped per project — typically $1k–$5k</div>
-          </div>
-          <p class="pkg-desc">We design and build your full AI marketing stack, integrate with your platforms, and hand it over ready to run. You manage from there.</p>
-          <ul class="pkg-feats">
-            <li>Full AI agent stack designed around your business</li>
-            <li>Platform integrations (Shopify, Klaviyo, Meta, Google)</li>
-            <li>Handover with full documentation</li>
-            <li>30-day support post-delivery</li>
-          </ul>
-          <a href="mailto:hello@getjunction.ai" class="btn btn-ghost" style="margin-top:auto;">Talk to us →</a>
-        </div>
-
-        <div class="pkg-card hi">
-          <div class="pkg-name">Marketing OS — Managed</div>
-          <div class="pkg-price">
-            <span class="amount gt" style="font-size:36px;">Custom</span>
-            <div class="note">Monthly retainer — let's talk</div>
-          </div>
-          <p class="pkg-desc">A fully managed AI marketing operation. Tom-led. Strategy, execution, and reporting — all handled. You focus on the business.</p>
-          <ul class="pkg-feats">
-            <li>Full marketing strategy + execution across all channels</li>
-            <li>Autonomous AI agents running daily</li>
-            <li>Meta, Google, SEO/AEO, Klaviyo, social, PR and more</li>
-            <li>Weekly briefings + monthly strategy review with Tom</li>
-            <li>Direct access — no account managers</li>
-          </ul>
-          <a href="mailto:hello@getjunction.ai" class="btn btn-grad" style="margin-top:auto;">Book a call →</a>
-        </div>
-
-        <div class="pkg-card dim">
-          <div class="coming-tag">Coming Soon</div>
-          <div class="pkg-name">Business OS — All Inclusive</div>
-          <div class="pkg-price">
-            <span class="amount" style="font-family:'Jeko',sans-serif;font-size:36px;font-weight:800;color:var(--gray);">TBA</span>
-            <div class="note">Full 24-agent business operating system</div>
-          </div>
-          <p class="pkg-desc">Marketing, finance, operations, strategy, customer intelligence — every domain, every department, fully autonomous.</p>
-          <ul class="pkg-feats">
-            <li>24 specialised agents across all business domains</li>
-            <li>Cross-agent intelligence sharing</li>
-            <li>Full financial + operational visibility</li>
-          </ul>
-          <a href="mailto:hello@getjunction.ai" class="btn btn-ghost" style="margin-top:auto;">Join waitlist →</a>
-        </div>
-
+      <div class="glass-card problem-card">
+        <div class="icon">💰</div>
+        <h4>Costly and Inefficient</h4>
+        <p>You're paying for overhead, not output. There's a better way to get expert-level marketing without the agency markup.</p>
+      </div>
+      <div class="glass-card problem-card">
+        <div class="icon">🔄</div>
+        <h4>Agencies Come and Go</h4>
+        <p>Short-term engagements, staff turnover, lost context. You need a long-term partner who builds a system that sticks.</p>
+      </div>
+      <div class="glass-card problem-card">
+        <div class="icon">🧩</div>
+        <h4>No Single Source of Truth</h4>
+        <p>Data scattered across platforms. No unified view of what's actually driving revenue. Every decision is a guess.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta" id="cta">
-  <div class="cta-inner">
-    <div class="label" style="display:block;text-align:center;">Get started</div>
-    <h2>Ready to run<br><span class="gt">on AI?</span></h2>
-    <p>Personal agents live in 24 hours. Business conversations can start today.</p>
-    <div class="cta-cards">
-      <a href="https://app.getjunction.ai/login" class="cta-card personal">
-        <span class="cta-card-tag">Personal OS</span>
-        <h3>Set up your agent</h3>
-        <p>Fill out the form. We build your agent. It arrives in your Telegram within 24 hours.</p>
-        <span class="cta-link personal">Get started — $5/month →</span>
-      </a>
-      <a href="mailto:hello@getjunction.ai" class="cta-card business">
-        <span class="cta-card-tag">Marketing OS</span>
-        <h3>Talk to Tom</h3>
-        <p>Tell us about your business and what you're trying to achieve. We'll take it from there.</p>
-        <span class="cta-link business">Start a conversation →</span>
-      </a>
+<!-- ============================================
+     HOW IT WORKS
+     ============================================ -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <span class="label">How It Works</span>
+    <h2>The system that <span class="grad-text">compounds</span></h2>
+    <p class="text-silver" style="max-width:600px; margin-top:1rem;">Same loop, every cycle. The difference: every iteration makes the next one smarter.</p>
+    <div class="process-grid">
+      <div class="glass-card process-step">
+        <div class="step-num">1</div>
+        <h4>Analysis</h4>
+        <p>We pull your real data — Shopify, Klaviyo, Meta, Google — and find what's actually working. Not vanity metrics. Real attribution.</p>
+      </div>
+      <div class="glass-card process-step">
+        <div class="step-num">2</div>
+        <h4>Strategy</h4>
+        <p>Based on the data structure, we identify the highest-leverage moves across your channels. What will actually move revenue?</p>
+      </div>
+      <div class="glass-card process-step">
+        <div class="step-num">3</div>
+        <h4>Execution</h4>
+        <p>The system produces all channel work — emails, ads, content, social — at quality. A full month's output in minutes.</p>
+      </div>
+      <div class="glass-card process-step">
+        <div class="step-num">4</div>
+        <h4>Repeat</h4>
+        <p>Learnings embedded back into the system. Playbooks updated. Skill files sharpened. The machine gets smarter every cycle.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============================================
+     SERVICES
+     ============================================ -->
+<section class="section" id="services">
+  <div class="container">
+    <span class="label">The Full Funnel</span>
+    <h2>Everything connected. <span class="grad-text">One system.</span></h2>
+    <p class="text-silver" style="max-width:650px; margin-top:1rem;">We work across your entire marketing funnel — from your website to traffic to conversion to retention. Real people. Real expertise. AI-powered execution.</p>
+    <div class="services-grid">
+      <div class="glass-card service-card">
+        <div class="service-icon">🌐</div>
+        <h4>Website</h4>
+        <p>Your storefront is the foundation. We optimise your website for conversion — theme improvements, page speed, UX, and structure. Everything starts here.</p>
+      </div>
+      <div class="glass-card service-card">
+        <div class="service-icon">📈</div>
+        <h4>Traffic — SEO, GEO, Paid Ads</h4>
+        <p>Drive qualified visitors through SEO and AI search optimisation (GEO), Meta Ads, and Google Ads. Daily content publishing. Autonomous campaign management. Shopify-verified ROAS.</p>
+      </div>
+      <div class="glass-card service-card">
+        <div class="service-icon">🎯</div>
+        <h4>CRO — Conversion Optimisation</h4>
+        <p>A/B testing, add-ons, upsells, checkout optimisation, and website changes that turn more visitors into buyers. Data-driven improvements, not guesswork.</p>
+      </div>
+      <div class="glass-card service-card">
+        <div class="service-icon">📧</div>
+        <h4>Email Marketing</h4>
+        <p>Complete flow architecture — welcome, cart recovery, replenishment, win-back. 3-5 campaigns per week. Full Klaviyo integration. Target: 30-40% of total revenue from email.</p>
+      </div>
+      <div class="glass-card service-card">
+        <div class="service-icon">📱</div>
+        <h4>Organic Social</h4>
+        <p>We work with real content creators. Strategy, shoot coordination, content calendars, community management. AI video production available on contract. Authentic content that builds trust.</p>
+      </div>
+      <div class="glass-card service-card">
+        <div class="service-icon">📊</div>
+        <h4>Real Attribution</h4>
+        <p>One source of truth. Per-order tracking matched to Shopify. Every customer tagged with acquisition channel and cohort. You know exactly what's driving revenue — verified, not estimated.</p>
+      </div>
+      <div class="glass-card service-card">
+        <div class="service-icon">🧠</div>
+        <h4>Compounding Intelligence</h4>
+        <p>Every cycle updates the skill files, playbooks, and workflows. What works gets codified. What doesn't gets eliminated. Your marketing system gets measurably better every month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CASE STUDY / PROOF
+     ============================================ -->
+<section class="section" id="proof">
+  <div class="container">
+    <span class="label">Case Study</span>
+    <h2>From minimal marketing to<br><span class="grad-text">full-service growth engine</span></h2>
+    <div class="case-study-content">
+      <div>
+        <div class="case-metrics">
+          <div class="glass-card metric-card">
+            <h3 class="grad-text">100%</h3>
+            <p>Revenue growth in 3 months</p>
+          </div>
+          <div class="glass-card metric-card">
+            <h3 class="grad-text">50%</h3>
+            <p>Revenue increase per month</p>
+          </div>
+          <div class="glass-card metric-card">
+            <h3 class="grad-text">10-20x</h3>
+            <p>Productivity increase</p>
+          </div>
+          <div class="glass-card metric-card">
+            <h3 class="grad-text">7.78x</h3>
+            <p>ROAS on Meta Ads</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-details">
+        <h3>Deep Blue Health — from very little eComm marketing to full-service autonomous growth.</h3>
+        <p>Deep Blue Health is a DTC supplement brand in New Zealand. They had a great product line but minimal marketing infrastructure. We deployed our full system — and the results have been unprecedented. 50% revenue increase per month, on track for 100% gain over a three-month period.</p>
+        <ul class="case-list">
+          <li>Went from almost no eComm marketing to full-service across all channels</li>
+          <li>10-20x productivity increase over previous marketing output</li>
+          <li>Shopify + Klaviyo + Meta Ads + Google Ads fully integrated</li>
+          <li>133+ campaigns tracked with real attribution</li>
+          <li>Daily SEO articles published and ranked automatically</li>
+          <li>Customer acquisition tagging + LTV cohort tracking</li>
+          <li>Weekly CEO reports generated automatically</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TWO WAYS TO WORK
+     ============================================ -->
+<section class="section" id="options">
+  <div class="container">
+    <span class="label">Two Ways to Work With Us</span>
+    <h2>You choose how to <span class="grad-text">run it</span></h2>
+    <p class="text-silver" style="max-width:600px; margin-top:1rem;">Everyone starts with the build. Then you decide: run the machine yourself, or we run it for you.</p>
+    <div class="pricing-grid">
+      <div class="glass-card pricing-card">
+        <h3>You Run It</h3>
+        <p class="price-desc" style="margin-top:1rem;">We build your full autonomous marketing system — skill files, workflows, playbooks, execution engine — configured for your brand. Then we hand you the keys. You operate it. Full training included.</p>
+        <ul class="pricing-features">
+          <li>Full marketing audit + channel strategy</li>
+          <li>Skill files configured for your brand</li>
+          <li>Workflows for every active channel</li>
+          <li>Playbooks from proven approaches</li>
+          <li>Autonomous execution system</li>
+          <li>Training on how to operate everything</li>
+        </ul>
+        <a href="#book" class="btn btn-ghost" style="width:100%; justify-content:center;">Let's Talk</a>
+      </div>
+      <div class="glass-card pricing-card featured">
+        <div class="pricing-badge">Full Service</div>
+        <h3>We Run It</h3>
+        <p class="price-desc" style="margin-top:1rem;">Everything in the build, plus we operate the entire system on your behalf. Strategy, execution, optimisation, and reporting — all handled. You get the output and the intelligence. We handle the operations.</p>
+        <ul class="pricing-features">
+          <li>Everything in the build</li>
+          <li>Full campaign management</li>
+          <li>Weekly intelligence reports</li>
+          <li>Monthly strategy reviews</li>
+          <li>Playbook iteration + system learning</li>
+          <li>Ad spend + production at cost</li>
+        </ul>
+        <a href="#book" class="btn btn-grad" style="width:100%; justify-content:center;">Let's Talk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="section" id="faq">
+  <div class="container">
+    <span class="label">FAQ</span>
+    <h2 style="text-align:center;">Common <span class="grad-text">questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How is this different from a traditional agency?
+          <span class="toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We're expert marketers who use AI to work faster and smarter — not a team of 20 people billing hours. Every channel connects into one system with one source of truth. Intelligence compounds across cycles instead of resetting every month. You get more output, better attribution, and efficient growth without the agency markup.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is this all AI or are there real people involved?
+          <span class="toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Real people, real expertise. We have 10+ years of marketing experience driving strategy and quality control. For organic content, we work with real content creators and coordinate shoots. AI handles the high-volume execution, analysis, and reporting — the things it does better and faster than humans. We also offer AI video production on a contract basis when needed.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What does "autonomous marketing system" actually mean?
+          <span class="toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Every channel gets a skill file (how to approach it for your brand), workflows (how to execute), and playbooks (what's proven to work). The system pulls your data, analyses performance, produces strategy, executes across all channels, and feeds learnings back in. Expert quality at unprecedented speed — with everything connected into one source of truth.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I run the system myself instead of having you manage it?
+          <span class="toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. We can set up the entire system for your brand, train you on how to operate it, and hand you the keys. You run it yourself with full training and support. Some clients start self-managed and later add our managed services as they scale.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What platforms do you work with?
+          <span class="toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Shopify (primary), Klaviyo, Meta Ads, Google Ads, Google Search Console, Google Analytics, and more. We integrate everything into one system so you have a single source of truth across all channels. If you're on a different stack, let's talk — we can evaluate compatibility.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What kind of brands do you work with?
+          <span class="toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>DTC and eCommerce brands with product-market fit who need their marketing to match. Health, wellness, beauty, food & beverage, and lifestyle are our sweet spot. We focus on long-term partnerships — not short-term project work.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do I know it's working?
+          <span class="toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>One source of truth. Shopify-verified attribution — not inflated platform numbers. Per-order tracking so you know exactly which channel drove each sale. We're transparent about what the data shows. If something isn't performing, we see it and adjust. No hiding behind dashboards.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA
+     ============================================ -->
+<section class="section cta-section" id="book">
+  <div class="container">
+    <span class="label">Get Started</span>
+    <h2>Ready to build your<br><span class="grad-text">marketing machine?</span></h2>
+    <p>30-minute call. We'll look at your current marketing, identify where the leverage is, and see if Junction AI is the right fit.</p>
+    <a href="#" class="btn btn-grad">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
 <footer>
-  <img src="logo-dark.png" alt="Junction AI">
-  <div class="footer-links">
-    <a href="#personal">Personal</a>
-    <a href="#marketing">Marketing</a>
-    <a href="#packages">Pricing</a>
-    <a href="mailto:hello@getjunction.ai">Contact</a>
+  <div class="container">
+    <p>© 2026 Junction AI. Auckland, New Zealand.</p>
+    <ul class="footer-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#book">Get in Touch</a></li>
+      <li><a href="mailto:tom@getjunction.ai">tom@getjunction.ai</a></li>
+    </ul>
   </div>
-  <p>© JunctionAI 2025</p>
 </footer>
 
-<script>
-function switchPkg(id,btn){
-  document.querySelectorAll('.pkg-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('pkg-'+id).classList.add('active');
-  btn.classList.add('active');
-}
-</script>
 </body>
 </html>
