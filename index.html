@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Junction AI — Expert Marketing, Powered by AI</title>
 <meta name="description" content="10+ years of marketing expertise, now supercharged with AI. Elite quality at unprecedented speed. Proven on a live brand with 100% revenue growth in 3 months.">
+<link rel="icon" type="image/png" href="logomark.png">
+<!-- Open Graph -->
+<meta property="og:title" content="Junction AI — Expert Marketing, Powered by AI">
+<meta property="og:description" content="Real marketers with deep experience, supercharged with AI. 100% revenue growth in 3 months. Every channel connected. Intelligence that compounds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getjunction.ai">
+<meta property="og:image" content="https://getjunction.ai/logomark.png">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Junction AI — Expert Marketing, Powered by AI">
+<meta name="twitter:description" content="Real marketers with deep experience, supercharged with AI. 100% revenue growth in 3 months.">
+<meta name="twitter:image" content="https://getjunction.ai/logomark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -709,7 +721,21 @@ footer .footer-links a:hover { color: var(--white); }
   .process-grid { grid-template-columns: 1fr; }
   .case-metrics { grid-template-columns: 1fr 1fr; }
   .hero-buttons { flex-direction: column; }
-  .nav-links { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(13, 13, 13, 0.97);
+    backdrop-filter: blur(28px);
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.show { display: flex; }
+  .nav-cta { margin-left: 0; margin-top: 0.5rem; }
   .mobile-toggle { display: block; }
   footer .container { flex-direction: column; gap: 1.5rem; text-align: center; }
   footer .footer-links { justify-content: center; }
@@ -730,7 +756,7 @@ footer .footer-links a:hover { color: var(--white); }
       <li><a href="#services">What's Included</a></li>
       <li><a href="#proof">Results</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li class="nav-cta"><a href="#book" class="btn btn-grad">Book a Call</a></li>
+      <li class="nav-cta"><a href="#book" class="btn btn-grad calendly-trigger">Book a Call</a></li>
     </ul>
     <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
   </div>
@@ -746,7 +772,7 @@ footer .footer-links a:hover { color: var(--white); }
       <h1>10+ years of expertise.<br><span class="grad-text">The next generation of marketing.</span></h1>
       <p>We're real marketers with deep experience — now applying that expertise through AI systems that produce elite-quality work at unprecedented speed. One source of truth. Every channel connected. Intelligence that compounds.</p>
       <div class="hero-buttons">
-        <a href="#book" class="btn btn-grad">Book a Discovery Call</a>
+        <a href="#book" class="btn btn-grad calendly-trigger">Book a Discovery Call</a>
         <a href="#proof" class="btn btn-ghost">See the Results</a>
       </div>
       <div class="hero-proof">
@@ -847,6 +873,62 @@ footer .footer-links a:hover { color: var(--white); }
 </section>
 
 <!-- ============================================
+     COMPARISON
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <span class="label">Why Junction AI</span>
+    <h2>Traditional agency vs <span class="grad-text">Junction AI</span></h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Traditional Agency</th>
+          <th class="highlight-col">Junction AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Speed</td>
+          <td>2-4 weeks per campaign</td>
+          <td class="highlight-col">Full month's output in days</td>
+        </tr>
+        <tr>
+          <td>Attribution</td>
+          <td>Platform-reported (inflated)</td>
+          <td class="highlight-col">Shopify-verified, per-order</td>
+        </tr>
+        <tr>
+          <td>Channel integration</td>
+          <td>Siloed teams, separate reports</td>
+          <td class="highlight-col">One system, one source of truth</td>
+        </tr>
+        <tr>
+          <td>Learning</td>
+          <td>Resets every campaign cycle</td>
+          <td class="highlight-col">Compounds — system gets smarter</td>
+        </tr>
+        <tr>
+          <td>Team</td>
+          <td>Junior staff, high turnover</td>
+          <td class="highlight-col">Senior expertise + AI execution</td>
+        </tr>
+        <tr>
+          <td>Cost structure</td>
+          <td>Hourly billing, agency markup</td>
+          <td class="highlight-col">Output-based, ad spend at cost</td>
+        </tr>
+        <tr>
+          <td>Reporting</td>
+          <td>Monthly PDF with vanity metrics</td>
+          <td class="highlight-col">Real-time intelligence, weekly reports</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================
      SERVICES
      ============================================ -->
 <section class="section" id="services">
@@ -905,20 +987,20 @@ footer .footer-links a:hover { color: var(--white); }
       <div>
         <div class="case-metrics">
           <div class="glass-card metric-card">
-            <h3 class="grad-text">100%</h3>
-            <p>Revenue growth in 3 months</p>
+            <h3 class="grad-text">3-5</h3>
+            <p>Email campaigns per week</p>
           </div>
           <div class="glass-card metric-card">
-            <h3 class="grad-text">50%</h3>
-            <p>Revenue increase per month</p>
+            <h3 class="grad-text">Daily</h3>
+            <p>SEO articles published</p>
           </div>
           <div class="glass-card metric-card">
-            <h3 class="grad-text">10-20x</h3>
-            <p>Productivity increase</p>
+            <h3 class="grad-text">24</h3>
+            <p>AI agents running 24/7</p>
           </div>
           <div class="glass-card metric-card">
-            <h3 class="grad-text">7.78x</h3>
-            <p>ROAS on Meta Ads</p>
+            <h3 class="grad-text">6</h3>
+            <p>Channels fully integrated</p>
           </div>
         </div>
       </div>
@@ -934,6 +1016,23 @@ footer .footer-links a:hover { color: var(--white); }
           <li>Customer acquisition tagging + LTV cohort tracking</li>
           <li>Weekly CEO reports generated automatically</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WHO'S BEHIND THIS
+     ============================================ -->
+<section class="section" id="about">
+  <div class="container">
+    <span class="label">Who's Behind This</span>
+    <div style="display:grid; grid-template-columns:auto 1fr; gap:3rem; align-items:center; max-width:800px;">
+      <div style="width:140px; height:140px; border-radius:50%; background:var(--grad); display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:700; flex-shrink:0;">T</div>
+      <div>
+        <h3 style="margin-bottom:0.75rem;">Tom Hall-Taylor</h3>
+        <p class="text-silver" style="font-size:0.95rem; line-height:1.7; margin-bottom:1rem;">Marketer, builder, operator. I've spent years across eCommerce, paid media, email, SEO, and brand — working with real budgets on real revenue. Now I build AI-powered marketing systems that do what used to take a full agency team. Junction AI is the system I built for Deep Blue Health — and the results speak for themselves. I work with a small number of brands at a time so every client gets the full system, not a watered-down version.</p>
+        <p style="font-size:0.9rem; color:var(--gray);">Auckland, New Zealand · <a href="mailto:tom@getjunction.ai" style="color:var(--violet);">tom@getjunction.ai</a></p>
       </div>
     </div>
   </div>
@@ -959,7 +1058,7 @@ footer .footer-links a:hover { color: var(--white); }
           <li>Autonomous execution system</li>
           <li>Training on how to operate everything</li>
         </ul>
-        <a href="#book" class="btn btn-ghost" style="width:100%; justify-content:center;">Let's Talk</a>
+        <a href="#book" class="btn btn-ghost calendly-trigger" style="width:100%; justify-content:center;">Let's Talk</a>
       </div>
       <div class="glass-card pricing-card featured">
         <div class="pricing-badge">Full Service</div>
@@ -973,7 +1072,7 @@ footer .footer-links a:hover { color: var(--white); }
           <li>Playbook iteration + system learning</li>
           <li>Ad spend + production at cost</li>
         </ul>
-        <a href="#book" class="btn btn-grad" style="width:100%; justify-content:center;">Let's Talk</a>
+        <a href="#book" class="btn btn-grad calendly-trigger" style="width:100%; justify-content:center;">Let's Talk</a>
       </div>
     </div>
   </div>
@@ -1062,7 +1161,8 @@ footer .footer-links a:hover { color: var(--white); }
     <span class="label">Get Started</span>
     <h2>Ready to build your<br><span class="grad-text">marketing machine?</span></h2>
     <p>30-minute call. We'll look at your current marketing, identify where the leverage is, and see if Junction AI is the right fit.</p>
-    <a href="#" class="btn btn-grad">Book a Discovery Call</a>
+    <p style="font-size:0.85rem; color:var(--violet); margin-bottom:2rem; margin-top:-1rem;">We take on a limited number of brands at a time to ensure every client gets the full system.</p>
+    <a href="#" class="btn btn-grad calendly-trigger">Book a Discovery Call</a>
   </div>
 </section>
 
@@ -1080,6 +1180,21 @@ footer .footer-links a:hover { color: var(--white); }
     </ul>
   </div>
 </footer>
+
+<!-- Calendly popup widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var CALENDLY_URL = 'https://calendly.com/REPLACE_WITH_YOUR_LINK';
+  document.querySelectorAll('.calendly-trigger').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      Calendly.initPopupWidget({ url: CALENDLY_URL });
+    });
+  });
+});
+</script>
 
 </body>
 </html>
