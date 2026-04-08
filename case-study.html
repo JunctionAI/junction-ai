@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Blue Health Case Study — Junction AI</title>
+<meta name="description" content="How Junction AI took Deep Blue Health from minimal marketing to a full-service autonomous growth engine. 100% revenue growth in 3 months. 7.78x ROAS. 24 AI agents. One operator.">
+<link rel="icon" type="image/png" href="logomark.png">
+<!-- Open Graph -->
+<meta property="og:title" content="Deep Blue Health Case Study — Junction AI">
+<meta property="og:description" content="From minimal marketing to full-service growth engine. 100% revenue growth in 3 months. 7.78x ROAS on Meta Ads. 24 AI agents running 24/7.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://getjunction.ai/case-study">
+<meta property="og:image" content="https://getjunction.ai/logomark.png">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep Blue Health Case Study — Junction AI">
+<meta name="twitter:description" content="From minimal marketing to full-service growth engine. 100% revenue growth in 3 months. 7.78x ROAS on Meta Ads.">
+<meta name="twitter:image" content="https://getjunction.ai/logomark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   JUNCTION AI — DESIGN SYSTEM
+   Colors: #0d0d0d, #00BFFF, #884DFF, #FF00BF
+   Fonts: Poppins
+   ============================================ */
+
+:root {
+  --black: #0d0d0d;
+  --white: #FFFFFF;
+  --cyan: #00BFFF;
+  --violet: #884DFF;
+  --cerise: #FF00BF;
+  --gray: #555566;
+  --silver: #9999aa;
+  --border: rgba(255,255,255,0.07);
+  --surf: rgba(255,255,255,0.03);
+  --grad: linear-gradient(135deg, #00BFFF 0%, #884DFF 50%, #FF00BF 100%);
+  --grad90: linear-gradient(90deg, #00BFFF 0%, #884DFF 55%, #FF00BF 100%);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); letter-spacing: -2.5px; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -2px; }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); letter-spacing: -0.5px; }
+h4 { font-size: 1.1rem; letter-spacing: -0.3px; }
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.text-silver { color: var(--silver); }
+.text-gray { color: var(--gray); }
+
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 8rem 0;
+  position: relative;
+}
+
+.section + .section {
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: 60px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-grad {
+  background: var(--grad);
+  color: var(--white);
+  box-shadow: 0 0 30px rgba(136, 77, 255, 0.3);
+}
+
+.btn-grad:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(136, 77, 255, 0.5);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.2rem 0;
+  background: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(28px) saturate(1.5);
+  border-bottom: 1px solid var(--border);
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.nav-logo span { color: var(--violet); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--silver);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); }
+
+.nav-cta { margin-left: 1rem; }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ============================================
+   GLASS CARDS
+   ============================================ */
+
+.glass-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  backdrop-filter: blur(28px) saturate(1.5);
+  transition: all 0.25s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* ============================================
+   HERO (CASE STUDY)
+   ============================================ */
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding-top: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(136, 77, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--silver);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+/* ============================================
+   METRICS GRID
+   ============================================ */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.metric-card {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.metric-card h3 {
+  font-size: 2.4rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: -1.5px;
+}
+
+.metric-card p {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+/* ============================================
+   CHALLENGE GRID
+   ============================================ */
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.challenge-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.challenge-card .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.challenge-card h4 {
+  margin-bottom: 0.75rem;
+}
+
+.challenge-card p {
+  font-size: 0.9rem;
+  color: var(--silver);
+}
+
+/* ============================================
+   SYSTEM FEATURES
+   ============================================ */
+
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.system-card {
+  padding: 2.5rem;
+}
+
+.system-card .system-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(136, 77, 255, 0.1);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.system-card h4 { margin-bottom: 0.75rem; }
+
+.system-card p {
+  font-size: 0.9rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* ============================================
+   CHANNEL RESULTS
+   ============================================ */
+
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.channel-card {
+  padding: 2.5rem;
+}
+
+.channel-card h4 {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.channel-card .channel-icon {
+  font-size: 1.3rem;
+}
+
+.channel-card ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.channel-card ul li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--silver);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.channel-card ul li::before {
+  content: '\2192';
+  color: var(--violet);
+  font-weight: 700;
+}
+
+.channel-card p {
+  font-size: 0.9rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* ============================================
+   STRUCTURAL INSIGHT
+   ============================================ */
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.insight-card {
+  padding: 3rem;
+  position: relative;
+}
+
+.insight-card.traditional {
+  opacity: 0.6;
+}
+
+.insight-card.junction {
+  border-color: rgba(136, 77, 255, 0.3);
+  box-shadow: 0 0 40px rgba(136, 77, 255, 0.08);
+}
+
+.insight-card .insight-badge {
+  position: absolute;
+  top: -12px;
+  left: 2rem;
+  background: var(--grad);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.insight-card h4 {
+  margin-bottom: 0.5rem;
+}
+
+.insight-card .cost {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+}
+
+.insight-card ul {
+  list-style: none;
+}
+
+.insight-card ul li {
+  padding: 0.6rem 0;
+  font-size: 0.9rem;
+  color: var(--silver);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   COMPARISON TABLE
+   ============================================ */
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 3rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+.comparison-table th {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.comparison-table td:first-child {
+  color: var(--silver);
+}
+
+.comparison-table td:nth-child(2) {
+  color: var(--silver);
+}
+
+.comparison-table td:last-child {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.comparison-table .highlight-col {
+  background: rgba(136, 77, 255, 0.04);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta-section {
+  text-align: center;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60%;
+  background: radial-gradient(ellipse at center bottom, rgba(136, 77, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section h2 { margin-bottom: 1rem; }
+
+.cta-section p {
+  color: var(--silver);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+footer .footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+footer .footer-links a {
+  font-size: 0.85rem;
+  color: var(--silver);
+  transition: color 0.2s;
+}
+
+footer .footer-links a:hover { color: var(--white); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 968px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .challenge-grid { grid-template-columns: repeat(2, 1fr); }
+  .system-grid { grid-template-columns: 1fr; }
+  .channel-grid { grid-template-columns: 1fr; }
+  .insight-grid { grid-template-columns: 1fr; }
+  .comparison-table { font-size: 0.85rem; }
+}
+
+@media (max-width: 640px) {
+  .section { padding: 5rem 0; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .challenge-grid { grid-template-columns: 1fr; }
+  .hero-buttons { flex-direction: column; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(13, 13, 13, 0.97);
+    backdrop-filter: blur(28px);
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.show { display: flex; }
+  .nav-cta { margin-left: 0; margin-top: 0.5rem; }
+  .mobile-toggle { display: block; }
+  footer .container { flex-direction: column; gap: 1.5rem; text-align: center; }
+  footer .footer-links { justify-content: center; }
+  .comparison-table th, .comparison-table td { padding: 0.8rem; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav>
+  <div class="container">
+    <a href="/" class="nav-logo"><img src="logomark.png" alt="Junction AI" height="32" style="margin-right: 0.5rem; vertical-align: middle;">Junction <span>AI</span></a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/case-study" class="active">Results</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li class="nav-cta"><a href="#book" class="btn btn-grad calendly-trigger">Book a Call</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero section">
+  <div class="container">
+    <div class="hero-content">
+      <span class="label">Case Study</span>
+      <h1>Deep Blue Health:<br><span class="grad-text">From Minimal Marketing to Full-Service Growth Engine</span></h1>
+      <p>How one operator and an AI-powered marketing system replaced an entire agency team — and delivered 100% revenue growth in three months.</p>
+      <div class="hero-buttons">
+        <a href="#book" class="btn btn-grad calendly-trigger">Book a Discovery Call</a>
+        <a href="#results" class="btn btn-ghost">See the Numbers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     THE CHALLENGE
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <span class="label">The Challenge</span>
+    <h2>A great product line with <span class="grad-text">no marketing engine</span></h2>
+    <p class="text-silver" style="max-width:650px; margin-top:1rem;">Deep Blue Health is a DTC supplement brand in New Zealand with a loyal customer base and strong product line. But when it came to marketing, almost nothing was running.</p>
+    <div class="challenge-grid">
+      <div class="glass-card challenge-card">
+        <div class="icon">&#9888;&#65039;</div>
+        <h4>Fragmented Marketing</h4>
+        <p>No unified strategy across channels. Each platform operated in isolation with no shared data, no shared learnings, and no coherent customer journey.</p>
+      </div>
+      <div class="glass-card challenge-card">
+        <div class="icon">&#128466;</div>
+        <h4>No Unified System</h4>
+        <p>No central source of truth for performance data. Shopify, Klaviyo, Meta, and Google each told a different story. Attribution was guesswork.</p>
+      </div>
+      <div class="glass-card challenge-card">
+        <div class="icon">&#9995;</div>
+        <h4>Manual Execution</h4>
+        <p>Every campaign, every email, every ad had to be built by hand. Output was severely limited by available hours and headcount.</p>
+      </div>
+      <div class="glass-card challenge-card">
+        <div class="icon">&#128200;</div>
+        <h4>Poor Attribution</h4>
+        <p>No per-order tracking. No customer acquisition tagging. No way to know which channels were actually driving revenue versus claiming credit.</p>
+      </div>
+      <div class="glass-card challenge-card">
+        <div class="icon">&#128101;</div>
+        <h4>Limited Headcount</h4>
+        <p>A small team stretched across operations, product, and everything else. No dedicated marketing resource. No agency. No bandwidth.</p>
+      </div>
+      <div class="glass-card challenge-card">
+        <div class="icon">&#128337;</div>
+        <h4>Missed Opportunities</h4>
+        <p>No email flows. No SEO. No retargeting. No replenishment triggers. Revenue was being left on the table across every channel, every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     THE SYSTEM WE BUILT
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <span class="label">The System We Built</span>
+    <h2>24 AI agents. 38 modules. <span class="grad-text">One autonomous stack.</span></h2>
+    <p class="text-silver" style="max-width:650px; margin-top:1rem;">We deployed a full marketing intelligence system — purpose-built for Deep Blue Health. Every channel connected. Every insight shared. Every cycle smarter than the last.</p>
+    <div class="system-grid">
+      <div class="glass-card system-card">
+        <div class="system-icon">&#129302;</div>
+        <h4>Autonomous Campaign Management</h4>
+        <p>Meta Ads managed with Shopify-verified ROAS tracking. Auto-pause underperformers. Auto-adjust budgets. A/B winner selection. Campaign drafting from intelligence — not guesswork.</p>
+      </div>
+      <div class="glass-card system-card">
+        <div class="system-icon">&#127919;</div>
+        <h4>Real Attribution</h4>
+        <p>Per-order tracking matched to Shopify. Every customer tagged with acquisition channel and cohort. One source of truth — not inflated platform numbers. CPA:LTV cohort analysis monthly.</p>
+      </div>
+      <div class="glass-card system-card">
+        <div class="system-icon">&#128257;</div>
+        <h4>Replenishment Triggers</h4>
+        <p>Product consumption rates calculated per SKU. Klaviyo events fired automatically when customers are due to reorder. Revenue recovered before it's lost.</p>
+      </div>
+      <div class="glass-card system-card">
+        <div class="system-icon">&#128218;</div>
+        <h4>Daily SEO Publishing</h4>
+        <p>Autonomous SEO agent publishes one article daily to the Shopify blog. DietarySupplement schema markup. Google Search Console feedback loop. AI citation monitoring for AEO.</p>
+      </div>
+      <div class="glass-card system-card">
+        <div class="system-icon">&#129504;</div>
+        <h4>Cross-Agent Intelligence</h4>
+        <p>24 agents share knowledge through an event bus. What the ads agent learns, the email agent uses. What the SEO agent discovers, the strategy agent incorporates. Intelligence compounds.</p>
+      </div>
+      <div class="glass-card system-card">
+        <div class="system-icon">&#128202;</div>
+        <h4>Automated Reporting</h4>
+        <p>Weekly CEO reports generated automatically with real data. Daily briefings across all channels. Rule engine creates Asana tasks from business logic. Nothing falls through the cracks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     THE RESULTS
+     ============================================ -->
+<section class="section" id="results">
+  <div class="container">
+    <span class="label">The Results</span>
+    <h2>Numbers that <span class="grad-text">speak for themselves</span></h2>
+    <div class="metrics-grid">
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">100%</h3>
+        <p>Revenue growth in 3 months</p>
+      </div>
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">7.78x</h3>
+        <p>ROAS on Meta Ads</p>
+      </div>
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">133+</h3>
+        <p>Campaigns tracked</p>
+      </div>
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">10-20x</h3>
+        <p>Productivity increase</p>
+      </div>
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">3-5</h3>
+        <p>Email campaigns per week</p>
+      </div>
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">Daily</h3>
+        <p>SEO articles published</p>
+      </div>
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">24</h3>
+        <p>AI agents running 24/7</p>
+      </div>
+      <div class="glass-card metric-card">
+        <h3 class="grad-text">6</h3>
+        <p>Channels fully integrated</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CHANNEL RESULTS
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <span class="label">Channel Breakdown</span>
+    <h2>Results across <span class="grad-text">every channel</span></h2>
+    <div class="channel-grid">
+      <div class="glass-card channel-card">
+        <h4><span class="channel-icon">&#128640;</span> Meta Ads</h4>
+        <p>Full-funnel paid social with Shopify-verified attribution — not inflated platform numbers.</p>
+        <ul>
+          <li>7.78x ROAS (Shopify-verified)</li>
+          <li>Auto-pause at &lt;2x for 3 consecutive days</li>
+          <li>Budget auto-adjustment up to +/-20%</li>
+          <li>A/B winner selection automated</li>
+          <li>Campaign drafts generated from intelligence</li>
+        </ul>
+      </div>
+      <div class="glass-card channel-card">
+        <h4><span class="channel-icon">&#128231;</span> Email Marketing</h4>
+        <p>Complete Klaviyo architecture — flows, campaigns, and automated triggers driving consistent revenue.</p>
+        <ul>
+          <li>3-5 campaigns sent per week</li>
+          <li>Full flow architecture: welcome, cart, win-back</li>
+          <li>Replenishment triggers based on consumption rates</li>
+          <li>Target: 30-40% of total revenue from email</li>
+          <li>Segment-level performance tracking</li>
+        </ul>
+      </div>
+      <div class="glass-card channel-card">
+        <h4><span class="channel-icon">&#128270;</span> SEO &amp; Content</h4>
+        <p>Autonomous content engine publishing daily, with structured data and AI search optimisation built in.</p>
+        <ul>
+          <li>1 article published daily to Shopify blog</li>
+          <li>DietarySupplement + FAQ schema markup</li>
+          <li>Google Search Console feedback loop</li>
+          <li>AI citation monitoring (AEO/GEO)</li>
+          <li>llms.txt generated monthly for AI discoverability</li>
+        </ul>
+      </div>
+      <div class="glass-card channel-card">
+        <h4><span class="channel-icon">&#129504;</span> Customer Intelligence</h4>
+        <p>Every customer tracked from acquisition to lifetime value. Real data driving real decisions.</p>
+        <ul>
+          <li>Per-order attribution to acquisition channel</li>
+          <li>Customer cohort tagging (channel + month)</li>
+          <li>CPA:LTV analysis by cohort (monthly)</li>
+          <li>Replenishment timing per SKU</li>
+          <li>Customer intelligence DB updated nightly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     THE STRUCTURAL INSIGHT
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <span class="label">The Structural Insight</span>
+    <h2>What this would cost as a <span class="grad-text">traditional team</span></h2>
+    <p class="text-silver" style="max-width:650px; margin-top:1rem;">The system we built for Deep Blue Health replaces the output of an entire marketing department. Here's what that team would look like — and what it would cost.</p>
+    <div class="insight-grid">
+      <div class="glass-card insight-card traditional">
+        <h4>Traditional Marketing Team</h4>
+        <div class="cost text-silver">$360-480K/year</div>
+        <ul>
+          <li>Marketing Manager ($80-100K)</li>
+          <li>Paid Media Specialist ($65-80K)</li>
+          <li>Email Marketing Manager ($60-75K)</li>
+          <li>SEO / Content Specialist ($55-70K)</li>
+          <li>Data Analyst ($65-80K)</li>
+          <li>Social Media Manager ($50-65K)</li>
+          <li>+ Agency fees, tool subscriptions, overhead</li>
+        </ul>
+      </div>
+      <div class="glass-card insight-card junction">
+        <div class="insight-badge">Junction AI</div>
+        <h4>One Operator + AI System</h4>
+        <div class="cost grad-text">A fraction of the cost</div>
+        <ul>
+          <li>Senior marketing expertise across all channels</li>
+          <li>24 AI agents executing 24/7</li>
+          <li>38 integrated modules</li>
+          <li>Real attribution, not guesswork</li>
+          <li>Intelligence that compounds every cycle</li>
+          <li>10-20x the output of a traditional team</li>
+          <li>System gets smarter — team turnover doesn't apply</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WHAT WE'D DO FOR YOUR BRAND
+     ============================================ -->
+<section class="section">
+  <div class="container">
+    <span class="label">Your Brand</span>
+    <h2>What stays the same. <span class="grad-text">What's customised.</span></h2>
+    <p class="text-silver" style="max-width:650px; margin-top:1rem;">The system architecture is proven. The implementation is tailored to your brand, your data, your channels, and your goals.</p>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Proven Framework</th>
+          <th class="highlight-col">Customised for You</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>System architecture</td>
+          <td>Multi-agent intelligence system</td>
+          <td class="highlight-col">Configured for your stack and channels</td>
+        </tr>
+        <tr>
+          <td>Attribution</td>
+          <td>Shopify-verified per-order tracking</td>
+          <td class="highlight-col">Mapped to your revenue sources</td>
+        </tr>
+        <tr>
+          <td>Email marketing</td>
+          <td>Full flow architecture + campaign cadence</td>
+          <td class="highlight-col">Your brand voice, segments, and products</td>
+        </tr>
+        <tr>
+          <td>Paid media</td>
+          <td>ROAS tracking + auto-optimisation</td>
+          <td class="highlight-col">Your audiences, creatives, and budget rules</td>
+        </tr>
+        <tr>
+          <td>SEO &amp; content</td>
+          <td>Daily publishing + schema + AEO</td>
+          <td class="highlight-col">Your category, keywords, and content strategy</td>
+        </tr>
+        <tr>
+          <td>Customer intelligence</td>
+          <td>Cohort tracking + replenishment triggers</td>
+          <td class="highlight-col">Your SKUs, consumption rates, and segments</td>
+        </tr>
+        <tr>
+          <td>Reporting</td>
+          <td>Automated weekly reports + daily briefings</td>
+          <td class="highlight-col">Your KPIs, stakeholders, and cadence</td>
+        </tr>
+        <tr>
+          <td>Learning system</td>
+          <td>Skill files + playbooks + compounding loops</td>
+          <td class="highlight-col">Trained on your brand's data and results</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA
+     ============================================ -->
+<section class="section cta-section" id="book">
+  <div class="container">
+    <span class="label">Get Started</span>
+    <h2>Ready to build your<br><span class="grad-text">marketing machine?</span></h2>
+    <p>30-minute call. We'll look at your current marketing, identify where the leverage is, and see if Junction AI is the right fit.</p>
+    <p style="font-size:0.85rem; color:var(--violet); margin-bottom:2rem; margin-top:-1rem;">We take on a limited number of brands at a time to ensure every client gets the full system.</p>
+    <a href="#" class="btn btn-grad calendly-trigger">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Junction AI. Auckland, New Zealand.</p>
+    <ul class="footer-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/case-study">Results</a></li>
+      <li><a href="mailto:hello@getjunction.ai">hello@getjunction.ai</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Calendly popup widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var CALENDLY_URL = 'https://calendly.com/tom-tspx/introductory-meeting';
+  document.querySelectorAll('.calendly-trigger').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      Calendly.initPopupWidget({ url: CALENDLY_URL });
+    });
+  });
+});
+</script>
+
+</body>
+</html>
